@@ -1,0 +1,3022 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>中级经济师（工商管理）闯关答题</title>
+  <style>
+    :root{
+      --bg:#0b1020; --panel:#121a33; --ink:#e8ecff; --muted:#a8b0d9;
+      --good:#7CFFB2; --bad:#ff6b8b; --warn:#ffcc66; --line:rgba(255,255,255,.12);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--ink);
+      font:14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+      background:radial-gradient(1100px 700px at 20% 0%, #15214a 0%, var(--bg) 55%);
+    }
+    header{
+      position:sticky; top:0; z-index:10;
+      padding:14px 18px;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      background:linear-gradient(180deg, rgba(18,26,51,0.95), rgba(18,26,51,0.65));
+      backdrop-filter: blur(8px);
+      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+    header .title{display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
+    header h1{margin:0; font-size:15px; letter-spacing:.2px;}
+    .tag{
+      font-size:12px; color:var(--muted);
+      border:1px solid rgba(255,255,255,0.12);
+      padding:3px 8px; border-radius:999px;
+      background:rgba(255,255,255,0.04);
+    }
+    main{
+      padding:16px 18px 26px;
+      display:grid;
+      grid-template-columns: 340px 1fr;
+      gap:14px;
+      align-items:start;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(18,26,51,0.92), rgba(18,26,51,0.78));
+      border:1px solid rgba(255,255,255,0.10);
+      border-radius:16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+      overflow:hidden;
+    }
+    .hd{padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center; gap:10px;}
+    .hd h2{margin:0; font-size:13px;}
+    .bd{padding:12px 14px 14px;}
+    .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:9px 11px; border-radius:12px;
+      border:1px solid rgba(255,255,255,0.14);
+      background:rgba(255,255,255,0.06); color:var(--ink);
+      cursor:pointer; user-select:none;
+      transition:transform .05s ease, background .2s ease;
+    }
+    .btn:hover{background:rgba(255,255,255,0.09)}
+    .btn:active{transform:translateY(1px)}
+    .btn.primary{border-color:rgba(124,255,178,0.22); box-shadow:0 0 0 1px rgba(124,255,178,0.06) inset;}
+    .btn.danger{border-color:rgba(255,107,139,0.22); box-shadow:0 0 0 1px rgba(255,107,139,0.06) inset;}
+    .btn.warn{border-color:rgba(255,204,102,0.22); box-shadow:0 0 0 1px rgba(255,204,102,0.06) inset;}
+    .kpi{
+      display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;
+    }
+    .pill{
+      padding:10px 10px; border-radius:14px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.05);
+      min-height:64px;
+    }
+    .pill .k{color:var(--muted); font-size:12px;}
+    .pill .v{margin-top:6px; font-size:14px;}
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;}
+    .good{color:var(--good)} .bad{color:var(--bad)} .warnTxt{color:var(--warn)}
+    .sep{height:1px; background:rgba(255,255,255,0.10); margin:12px 0;}
+    .qTitle{font-size:16px; margin:0 0 8px;}
+    .meta{color:var(--muted); font-size:12px;}
+    .optList{display:grid; gap:10px; margin-top:12px;}
+    .opt{
+      border:1px solid rgba(255,255,255,0.14);
+      background:rgba(255,255,255,0.05);
+      border-radius:14px;
+      padding:10px 12px;
+      cursor:pointer;
+      transition:background .15s ease, border-color .15s ease, transform .05s ease;
+      display:flex; gap:10px; align-items:flex-start;
+    }
+    .opt:hover{background:rgba(255,255,255,0.07)}
+    .opt:active{transform:translateY(1px)}
+    .opt input{margin-top:3px}
+    .opt.correct{border-color:rgba(124,255,178,0.35); box-shadow:0 0 0 1px rgba(124,255,178,0.08) inset;}
+    .opt.wrong{border-color:rgba(255,107,139,0.35); box-shadow:0 0 0 1px rgba(255,107,139,0.08) inset;}
+    .explain{
+      margin-top:12px;
+      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.04);
+      border-radius:14px;
+      padding:10px 12px;
+      color:var(--muted);
+      white-space:pre-line;
+    }
+    textarea{
+      width:100%; min-height:120px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.14);
+      border-radius:12px;
+      color:var(--ink);
+      padding:10px 12px;
+      outline:none;
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:12px;
+    }
+    .small{font-size:12px; color:var(--muted)}
+    @media (max-width: 980px){
+      main{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="title">
+    <h1>中级经济师（工商管理）闯关答题</h1>
+    <span class="tag" id="tagStage">第 1 关</span>
+    <span class="tag" id="tagMode">闯关模式</span>
+  </div>
+  <div class="row">
+    <button class="btn warn" id="btnReview">错题复习</button>
+    <button class="btn" id="btnResetProgress">清空进度</button>
+  </div>
+</header>
+
+<main>
+  <section class="card">
+    <div class="hd"><h2>关卡设置</h2><span class="small mono" id="bankInfo"></span></div>
+    <div class="bd">
+      <div class="row">
+        <label class="small">每关题数</label>
+        <input id="perStage" type="number" min="5" max="50" step="1" value="10" style="width:90px">
+        <label class="small">过关分数</label>
+        <input id="passScore" type="number" min="50" max="100" step="5" value="70" style="width:90px">
+        <label class="small">限时（分钟）</label>
+        <input id="timeLimit" type="number" min="0" max="120" step="5" value="0" style="width:90px">
+      </div>
+
+      <div class="sep"></div>
+
+      <div class="row">
+        <button class="btn primary" id="btnStart">开始/继续</button>
+        <button class="btn" id="btnSkip">跳过本题</button>
+        <button class="btn" id="btnNext" disabled>下一题</button>
+      </div>
+
+      <div class="kpi">
+        <div class="pill">
+          <div class="k">本关进度</div>
+          <div class="v mono" id="kpiProgress">0 / 0</div>
+        </div>
+        <div class="pill">
+          <div class="k">本关得分</div>
+          <div class="v mono" id="kpiScore">0</div>
+        </div>
+        <div class="pill">
+          <div class="k">连对奖励</div>
+          <div class="v mono" id="kpiStreak">0</div>
+        </div>
+        <div class="pill">
+          <div class="k">剩余时间</div>
+          <div class="v mono" id="kpiTime">∞</div>
+        </div>
+      </div>
+
+      <div class="sep"></div>
+
+      <div class="small">
+        题库粘贴入口（可选）：把你的题库 JSON 粘到下面，然后点“导入题库”。<br>
+        <span class="warnTxt">注意：这里不联网，题库只保存在你的浏览器本地。</span>
+      </div>
+      <div style="margin-top:8px;">
+        <textarea id="bankInput" placeholder='粘贴题库 JSON，例如：[{ "id":"Q1", "type":"single", "stem":"...", "options":["A...","B..."], "answer":[0], "explain":"..." , "tags":["战略"] }]' ></textarea>
+        <div class="row" style="margin-top:8px;">
+          <button class="btn" id="btnImport">导入题库</button>
+          <button class="btn" id="btnExportWrong">导出错题 JSON</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="hd"><h2>答题区</h2><span class="small mono" id="qMeta">—</span></div>
+    <div class="bd">
+      <p class="qTitle" id="qStem">点击“开始/继续”开始闯关</p>
+      <div class="meta" id="qTags"></div>
+      <div class="optList" id="optList"></div>
+      <div class="row" style="margin-top:12px;">
+        <button class="btn primary" id="btnSubmit" disabled>提交答案</button>
+        <span class="small" id="submitHint"></span>
+      </div>
+      <div class="explain" id="explainBox" style="display:none;"></div>
+    </div>
+  </section>
+</main>
+
+<script>
+/** ==========================
+ *  题库格式说明（每题一个对象）
+ *  {
+ *    id: "唯一ID",
+ *    type: "single" | "multi",   // 单选/多选；判断可用 single + 两个选项
+ *    stem: "题干",
+ *    options: ["选项A", "选项B", ...],
+ *    answer: [0] 或 [1,3],       // 正确选项索引（从0开始）
+ *    explain: "解析（可选）",
+ *    tags: ["战略","营销"]       // 可选
+ *  }
+ * ========================== */
+
+/* ✅ 这里是示例题库：你换成你的题库即可 */
+let QUESTION_BANK = [
+  {
+    "id":"GS-STR-H-001",
+    "type":"single",
+    "stem":"企业总体战略中，通过进入新业务领域以分散经营风险、获取新的利润增长点，这种战略属于：",
+    "options":["一体化战略","多元化战略","稳定战略","收缩战略"],
+    "answer":[1],
+    "explain":"多元化战略是企业进入新的业务或市场领域，通过分散风险、培育新的增长点来实现长期发展的战略。",
+    "tags":["企业战略","高频"]
+  },
+  {
+    "id":"GS-STR-H-002",
+    "type":"single",
+    "stem":"下列不属于企业外部宏观环境分析内容的是：",
+    "options":["政治法律环境","经济环境","社会文化环境","组织结构"],
+    "answer":[3],
+    "explain":"组织结构属于企业内部环境分析内容，而非外部宏观环境。",
+    "tags":["企业战略","高频"]
+  },
+  {
+    "id":"GS-MKT-H-001",
+    "type":"single",
+    "stem":"在市场营销组合理论中，4P 不包括下列哪一项？",
+    "options":["产品（Product）","价格（Price）","渠道（Place）","人员（People）"],
+    "answer":[3],
+    "explain":"传统营销组合 4P 包括产品、价格、渠道和促销（Promotion）。",
+    "tags":["市场营销","高频"]
+  },
+  {
+    "id":"GS-MKT-H-002",
+    "type":"single",
+    "stem":"当企业根据不同细分市场的需求特点，分别设计不同的营销方案时，采用的是：",
+    "options":["无差异营销","差异化营销","集中营销","关系营销"],
+    "answer":[1],
+    "explain":"差异化营销是针对多个细分市场，分别设计不同营销组合策略。",
+    "tags":["市场营销","高频"]
+  },
+  {
+    "id":"GS-HR-H-001",
+    "type":"single",
+    "stem":"绩效管理的核心环节是：",
+    "options":["绩效考核","绩效计划","绩效反馈","绩效改进"],
+    "answer":[0],
+    "explain":"绩效考核是绩效管理体系中的核心环节，是其他环节的基础。",
+    "tags":["人力资源管理","高频"]
+  },
+  {
+    "id":"GS-HR-H-002",
+    "type":"multi",
+    "stem":"下列属于绩效考核常用方法的有：",
+    "options":["关键绩效指标法（KPI）","目标管理法（MBO）","平衡计分卡（BSC）","期权定价模型"],
+    "answer":[0,1,2],
+    "explain":"KPI、MBO、BSC 均属于绩效管理方法；期权定价模型属于金融领域。",
+    "tags":["人力资源管理","高频"]
+  },
+  {
+    "id":"GS-OPS-H-001",
+    "type":"single",
+    "stem":"准时制生产（JIT）的核心目标是：",
+    "options":["最大化库存","减少浪费和库存","提高安全库存","提高设备利用率"],
+    "answer":[1],
+    "explain":"JIT 的核心思想是在需要的时间、按需要的数量生产，以减少库存和浪费。",
+    "tags":["生产与运作管理","高频"]
+  },
+  {
+    "id":"GS-OPS-H-002",
+    "type":"single",
+    "stem":"推式生产方式的主要特点是：",
+    "options":["以客户订单为起点","以前一工序为起点","以需求预测为基础","以拉动信号为基础"],
+    "answer":[2],
+    "explain":"推式生产是以需求预测为依据进行生产安排。",
+    "tags":["生产与运作管理","高频"]
+  },
+  {
+    "id":"GS-MGT-H-001",
+    "type":"single",
+    "stem":"管理的基本职能不包括：",
+    "options":["计划","组织","激励","控制"],
+    "answer":[2],
+    "explain":"管理的基本职能通常包括计划、组织、领导和控制。",
+    "tags":["管理学基础","高频"]
+  },
+  {
+    "id":"GS-MGT-H-002",
+    "type":"single",
+    "stem":"强调通过激励和引导员工实现组织目标的管理职能是：",
+    "options":["计划","组织","领导","控制"],
+    "answer":[2],
+    "explain":"领导职能强调激励、沟通和引导员工实现组织目标。",
+    "tags":["管理学基础","高频"]
+  },
+  {
+    "id":"GS-STR-H-011",
+    "type":"single",
+    "stem":"企业采用纵向一体化战略的主要目的之一是：",
+    "options":["分散经营风险","控制关键资源和环节","缩小经营规模","进入不相关行业"],
+    "answer":[1],
+    "explain":"纵向一体化战略通过控制供应链上下游关键环节，提高企业对资源和市场的控制能力。",
+    "tags":["企业战略","高频"]
+  },
+  {
+    "id":"GS-STR-H-012",
+    "type":"single",
+    "stem":"SWOT 分析中，反映企业内部优势因素的是：",
+    "options":["S","W","O","T"],
+    "answer":[0],
+    "explain":"S（Strength）表示企业内部优势；W 为劣势，O 为机会，T 为威胁。",
+    "tags":["企业战略","高频"]
+  },
+  {
+    "id":"GS-STR-H-013",
+    "type":"single",
+    "stem":"企业在经营环境发生重大不利变化时，采取削减规模、减少业务的战略称为：",
+    "options":["稳定战略","多元化战略","收缩战略","一体化战略"],
+    "answer":[2],
+    "explain":"收缩战略是在不利环境下，为改善经营状况而主动缩小经营规模的战略。",
+    "tags":["企业战略","高频"]
+  },
+  {
+    "id":"GS-MKT-H-011",
+    "type":"single",
+    "stem":"市场细分的客观基础是：",
+    "options":["消费者需求差异","企业资源差异","产品差异","竞争程度"],
+    "answer":[0],
+    "explain":"市场细分的理论基础是消费者需求的差异性。",
+    "tags":["市场营销","高频"]
+  },
+  {
+    "id":"GS-MKT-H-012",
+    "type":"single",
+    "stem":"企业通过广告、促销、公关等方式影响消费者购买行为，这属于营销组合中的：",
+    "options":["产品策略","价格策略","渠道策略","促销策略"],
+    "answer":[3],
+    "explain":"促销策略是通过沟通手段影响消费者认知和购买行为。",
+    "tags":["市场营销","高频"]
+  },
+  {
+    "id":"GS-MKT-H-013",
+    "type":"single",
+    "stem":"关系营销强调的核心是：",
+    "options":["一次性交易","价格竞争","长期客户关系","短期销量最大化"],
+    "answer":[2],
+    "explain":"关系营销注重建立和维护长期稳定的客户关系。",
+    "tags":["市场营销","高频"]
+  },
+  {
+    "id":"GS-HR-H-011",
+    "type":"single",
+    "stem":"人力资源规划的首要步骤是：",
+    "options":["供给预测","需求预测","制定计划","实施与评估"],
+    "answer":[1],
+    "explain":"人力资源规划首先要预测组织未来对人力资源的需求。",
+    "tags":["人力资源管理","高频"]
+  },
+  {
+    "id":"GS-HR-H-012",
+    "type":"single",
+    "stem":"通过工作说明书明确岗位职责、任职条件的活动属于：",
+    "options":["工作分析","绩效考核","人员招聘","薪酬管理"],
+    "answer":[0],
+    "explain":"工作分析是对岗位职责、权限和任职条件进行系统描述。",
+    "tags":["人力资源管理","高频"]
+  },
+  {
+    "id":"GS-HR-H-013",
+    "type":"single",
+    "stem":"激励理论中，强调需要由低到高逐级满足的是：",
+    "options":["双因素理论","期望理论","需求层次理论","公平理论"],
+    "answer":[2],
+    "explain":"马斯洛需求层次理论认为人的需要呈层次性。",
+    "tags":["人力资源管理","高频"]
+  },
+  {
+    "id":"GS-OPS-H-011",
+    "type":"single",
+    "stem":"拉式生产方式的显著特征是：",
+    "options":["以预测为依据","以库存为中心","以下游需求拉动生产","强调批量生产"],
+    "answer":[2],
+    "explain":"拉式生产是由下游需求拉动上游生产。",
+    "tags":["生产与运作管理","高频"]
+  },
+  {
+    "id":"GS-OPS-H-012",
+    "type":"single",
+    "stem":"生产运作管理的核心目标是：",
+    "options":["提高产量","降低成本","实现质量、成本、交期的协调","扩大生产规模"],
+    "answer":[2],
+    "explain":"生产运作管理追求质量、成本、交期等多目标的协调优化。",
+    "tags":["生产与运作管理","高频"]
+  },
+  {
+    "id":"GS-MGT-H-011",
+    "type":"single",
+    "stem":"管理控制职能的主要作用是：",
+    "options":["制定目标","配置资源","纠正偏差","激励员工"],
+    "answer":[2],
+    "explain":"控制职能通过对实际执行与计划的比较，纠正偏差。",
+    "tags":["管理学基础","高频"]
+  },
+  {
+    "id":"GS-MGT-H-012",
+    "type":"single",
+    "stem":"管理层次中，负责制定总体战略的是：",
+    "options":["基层管理者","中层管理者","高层管理者","执行层"],
+    "answer":[2],
+    "explain":"高层管理者主要负责组织整体战略和重大决策。",
+    "tags":["管理学基础","高频"]
+  },
+  {
+    "id":"GS-STR-H-021",
+    "type":"single",
+    "stem":"企业使命主要回答的问题是：",
+    "options":["企业现在做什么","企业将来做什么","企业为什么存在","企业如何盈利"],
+    "answer":[2],
+    "explain":"企业使命阐明企业存在的根本目的和价值追求。",
+    "tags":["企业战略","高频"]
+  },
+  {
+    "id":"GS-MKT-H-021",
+    "type":"single",
+    "stem":"产品生命周期中，竞争最激烈、价格下降明显的阶段是：",
+    "options":["导入期","成长期","成熟期","衰退期"],
+    "answer":[2],
+    "explain":"成熟期市场竞争最激烈，价格和利润空间趋于下降。",
+    "tags":["市场营销","高频"]
+  },
+  {
+    "id":"GS-HR-H-021",
+    "type":"single",
+    "stem":"薪酬管理的基本原则不包括：",
+    "options":["公平性","激励性","合法性","随意性"],
+    "answer":[3],
+    "explain":"薪酬管理应遵循公平、激励、合法等原则。",
+    "tags":["人力资源管理","高频"]
+  },
+  {
+    "id":"GS-OPS-H-021",
+    "type":"single",
+    "stem":"生产计划中，长期计划通常关注的是：",
+    "options":["具体作业安排","设备维护","生产能力决策","每日产量"],
+    "answer":[2],
+    "explain":"长期生产计划主要涉及产能规模等战略性决策。",
+    "tags":["生产与运作管理","高频"]
+  },
+  {
+    "id":"GS-MGT-H-021",
+    "type":"single",
+    "stem":"管理沟通的主要作用是：",
+    "options":["发布命令","传递信息并达成理解","控制员工行为","考核绩效"],
+    "answer":[1],
+    "explain":"管理沟通的核心是信息传递和相互理解。",
+    "tags":["管理学基础","高频"]
+  },
+  {
+    "id":"GS-STR-H-031",
+    "type":"single",
+    "stem":"企业战略管理的核心是：",
+    "options":["资源配置","环境分析","战略选择与实施","组织结构设计"],
+    "answer":[2],
+    "explain":"战略管理的核心在于战略的选择与实施。",
+    "tags":["企业战略","高频"]
+  },
+  {
+    "id":"GS-MKT-H-031",
+    "type":"single",
+    "stem":"品牌的核心价值主要体现在：",
+    "options":["产品功能","价格优势","消费者认知与忠诚","渠道覆盖"],
+    "answer":[2],
+    "explain":"品牌价值源于消费者的认知、信任和忠诚。",
+    "tags":["市场营销","高频"]
+  },
+  {
+    "id":"GS-HR-H-031",
+    "type":"single",
+    "stem":"员工培训的最终目的是：",
+    "options":["提高员工满意度","增加培训次数","提升组织绩效","完成培训计划"],
+    "answer":[2],
+    "explain":"培训的最终目标是通过提升员工能力来提高组织绩效。",
+    "tags":["人力资源管理","高频"]
+  },
+  {
+    "id":"GS-OPS-H-031",
+    "type":"single",
+    "stem":"质量管理中，全面质量管理（TQM）强调：",
+    "options":["事后检验","全员参与与持续改进","只关注产品质量","降低检验成本"],
+    "answer":[1],
+    "explain":"TQM 强调全员参与、全过程控制和持续改进。",
+    "tags":["生产与运作管理","高频"]
+  },
+  {
+    "id":"GS-MGT-H-031",
+    "type":"single",
+    "stem":"现代管理理论中，强调系统观点的是：",
+    "options":["科学管理理论","行为科学理论","系统管理理论","权变理论"],
+    "answer":[2],
+    "explain":"系统管理理论强调组织是一个相互联系的整体。",
+    "tags":["管理学基础","高频"]
+  },
+  {
+    "id":"GS2-STR-M-001",
+    "type":"single",
+    "stem":"企业在现有市场中，通过提高现有产品的市场占有率来实现增长，这种战略属于：",
+    "options":["市场渗透战略","产品开发战略","市场开发战略","多元化战略"],
+    "answer":[0],
+    "explain":"市场渗透战略是在现有市场、现有产品条件下，通过提高市场份额实现增长。",
+    "tags":["企业战略","中频"]
+  },
+  {
+    "id":"GS2-STR-M-002",
+    "type":"single",
+    "stem":"企业愿景与使命的主要区别在于，使命侧重回答：",
+    "options":["企业未来目标","企业存在的根本目的","企业长期战略路径","企业竞争优势来源"],
+    "answer":[1],
+    "explain":"企业使命强调企业存在的根本目的和价值追求，愿景侧重未来发展蓝图。",
+    "tags":["企业战略","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-001",
+    "type":"single",
+    "stem":"按照消费者购买行为特征进行市场细分，属于：",
+    "options":["地理细分","人口细分","心理细分","行为细分"],
+    "answer":[3],
+    "explain":"行为细分是根据消费者的购买行为、使用频率和忠诚度等因素进行细分。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-002",
+    "type":"single",
+    "stem":"企业在产品成熟期通常采取的营销策略是：",
+    "options":["扩大促销、稳定市场","快速推出新品","大幅提价","减少渠道覆盖"],
+    "answer":[0],
+    "explain":"成熟期竞争激烈，企业多采取促销和市场维护策略。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-003",
+    "type":"single",
+    "stem":"定价中“撇脂定价”策略最适用于：",
+    "options":["需求弹性大的产品","技术含量高、生命周期短的产品","完全竞争市场","价格敏感型消费者"],
+    "answer":[1],
+    "explain":"撇脂定价通过初期高价获取高利润，适用于技术含量高、竞争少的产品。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-HR-M-001",
+    "type":"single",
+    "stem":"工作评价的主要目的是：",
+    "options":["确定员工绩效","确定岗位相对价值","评价员工能力","制定培训计划"],
+    "answer":[1],
+    "explain":"工作评价是为确定岗位相对价值，常用于薪酬体系设计。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-HR-M-002",
+    "type":"single",
+    "stem":"在员工招聘中，内部招聘的主要优点是：",
+    "options":["扩大人才来源","降低培训成本","激励员工、成本较低","引入新观念"],
+    "answer":[2],
+    "explain":"内部招聘有利于激励员工，成本低、适应快，但可能限制新思想引入。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-HR-M-003",
+    "type":"single",
+    "stem":"公平理论认为，员工的工作态度主要取决于：",
+    "options":["报酬绝对水平","工作本身兴趣","投入与回报的相对比较","领导风格"],
+    "answer":[2],
+    "explain":"公平理论强调员工会将自身投入产出比与他人进行比较。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-001",
+    "type":"single",
+    "stem":"生产能力计划主要解决的问题是：",
+    "options":["生产什么产品","生产多少产品","如何安排作业","生产能力规模与配置"],
+    "answer":[3],
+    "explain":"生产能力计划关注生产能力规模及其配置问题。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-002",
+    "type":"single",
+    "stem":"库存管理中，经济订货量模型（EOQ）主要考虑的成本是：",
+    "options":["缺货成本与采购成本","订货成本与保管成本","生产成本与运输成本","固定成本与变动成本"],
+    "answer":[1],
+    "explain":"EOQ 模型通过平衡订货成本与库存保管成本来确定最优订货量。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-003",
+    "type":"single",
+    "stem":"作业排序的主要目标是：",
+    "options":["减少库存","缩短生产周期","提高员工积极性","降低原材料成本"],
+    "answer":[1],
+    "explain":"作业排序旨在合理安排加工顺序，缩短生产周期。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-001",
+    "type":"single",
+    "stem":"权变理论认为，最有效的管理方式取决于：",
+    "options":["管理者经验","组织规模","外部环境和具体情境","企业文化"],
+    "answer":[2],
+    "explain":"权变理论强调不存在放之四海而皆准的管理方式，应因情而变。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-002",
+    "type":"single",
+    "stem":"管理幅度是指：",
+    "options":["管理层级数量","管理者直接管辖的下属人数","组织规模大小","管理权限范围"],
+    "answer":[1],
+    "explain":"管理幅度是一个管理者能够直接有效管理的下属人数。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-003",
+    "type":"single",
+    "stem":"组织结构设计中，强调专业化分工的结构形式是：",
+    "options":["事业部制","矩阵制","职能制","项目制"],
+    "answer":[2],
+    "explain":"职能制以专业职能分工为核心，强调专业化管理。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS2-STR-M-003",
+    "type":"single",
+    "stem":"企业通过收购同行企业以扩大市场份额，这种一体化属于：",
+    "options":["前向一体化","后向一体化","横向一体化","纵向一体化"],
+    "answer":[2],
+    "explain":"横向一体化是指企业在同一行业内通过并购扩大规模。",
+    "tags":["企业战略","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-004",
+    "type":"single",
+    "stem":"企业选择目标市场时，应重点考虑的因素不包括：",
+    "options":["市场规模与增长性","竞争强度","企业自身资源","宏观经济周期"],
+    "answer":[3],
+    "explain":"目标市场选择主要考虑市场吸引力和企业自身条件，宏观周期不直接作为细分依据。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-HR-M-004",
+    "type":"single",
+    "stem":"培训需求分析通常不包括：",
+    "options":["组织分析","工作分析","人员分析","薪酬分析"],
+    "answer":[3],
+    "explain":"培训需求分析包括组织、工作和人员分析，不包括薪酬分析。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-004",
+    "type":"single",
+    "stem":"质量成本中，用于预防不合格品发生的成本是：",
+    "options":["鉴定成本","内部损失成本","外部损失成本","预防成本"],
+    "answer":[3],
+    "explain":"预防成本是为避免质量问题发生而投入的成本。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-004",
+    "type":"single",
+    "stem":"管理决策的首要步骤是：",
+    "options":["方案评价","发现和界定问题","选择方案","实施决策"],
+    "answer":[1],
+    "explain":"管理决策首先要发现和界定问题，其后才是方案制定与选择。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS2-STR-M-021",
+    "type":"single",
+    "stem":"企业在制定战略时，对外部环境进行分析的主要目的是：",
+    "options":["发现企业内部优势","识别机会与威胁","确定组织结构","评价员工绩效"],
+    "answer":[1],
+    "explain":"外部环境分析的核心目的是识别企业面临的机会与威胁。",
+    "tags":["企业战略","中频"]
+  },
+  {
+    "id":"GS2-STR-M-022",
+    "type":"single",
+    "stem":"企业将资源集中于某一特定细分市场，力求在该市场取得竞争优势的战略是：",
+    "options":["成本领先战略","差异化战略","集中战略","多元化战略"],
+    "answer":[2],
+    "explain":"集中战略强调在特定细分市场中形成竞争优势。",
+    "tags":["企业战略","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-021",
+    "type":"single",
+    "stem":"产品组合宽度是指企业拥有的：",
+    "options":["产品项目数量","产品线数量","单个产品的品种数","产品生命周期长度"],
+    "answer":[1],
+    "explain":"产品组合宽度是指企业拥有的产品线数量。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-022",
+    "type":"single",
+    "stem":"下列不属于影响消费者购买行为的心理因素的是：",
+    "options":["动机","知觉","学习","收入水平"],
+    "answer":[3],
+    "explain":"收入水平属于经济因素，而非心理因素。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-023",
+    "type":"single",
+    "stem":"在渠道管理中，制造商直接向最终消费者销售产品的渠道形式是：",
+    "options":["零级渠道","一级渠道","二级渠道","三级渠道"],
+    "answer":[0],
+    "explain":"零级渠道是生产者直接向消费者销售产品。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-HR-M-021",
+    "type":"single",
+    "stem":"员工培训效果评估中，考察培训对组织绩效影响的是：",
+    "options":["反应层次","学习层次","行为层次","结果层次"],
+    "answer":[3],
+    "explain":"结果层次评估培训对组织绩效和经营成果的影响。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-HR-M-022",
+    "type":"single",
+    "stem":"劳动定额的主要作用是：",
+    "options":["确定岗位职责","衡量劳动消耗","评价员工态度","制定培训计划"],
+    "answer":[1],
+    "explain":"劳动定额用于衡量和控制劳动消耗。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-HR-M-023",
+    "type":"single",
+    "stem":"赫茨伯格双因素理论中的“保健因素”主要作用是：",
+    "options":["提高满意度","消除不满意","激发工作积极性","增强责任感"],
+    "answer":[1],
+    "explain":"保健因素只能防止不满，但不能真正激励员工。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-021",
+    "type":"single",
+    "stem":"生产过程按工艺顺序布置设备的布局方式是：",
+    "options":["产品原则布局","工艺原则布局","固定位置布局","混合布局"],
+    "answer":[1],
+    "explain":"工艺原则布局是按工艺流程对设备进行布置。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-022",
+    "type":"single",
+    "stem":"影响生产系统柔性的主要因素是：",
+    "options":["设备通用性","库存水平","组织层级","市场规模"],
+    "answer":[0],
+    "explain":"设备的通用性越强，生产系统柔性越高。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-023",
+    "type":"single",
+    "stem":"全面质量管理强调的质量责任主体是：",
+    "options":["质量检验部门","生产部门","管理层","全体员工"],
+    "answer":[3],
+    "explain":"全面质量管理强调全员参与质量管理。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-021",
+    "type":"single",
+    "stem":"管理信息系统的主要功能是：",
+    "options":["处理日常事务","为决策提供信息支持","监督员工行为","控制成本"],
+    "answer":[1],
+    "explain":"管理信息系统的核心功能是为管理决策提供信息支持。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-022",
+    "type":"single",
+    "stem":"组织文化中，最容易被观察到的是：",
+    "options":["价值观","基本假设","制度规范","物质层和行为层"],
+    "answer":[3],
+    "explain":"组织文化的外显层包括物质层和行为层，最容易被观察。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-023",
+    "type":"single",
+    "stem":"管理者在进行授权时应遵循的原则是：",
+    "options":["权责不对等","集权为主","权责一致","只授予权力不授予责任"],
+    "answer":[2],
+    "explain":"授权应遵循权责一致原则。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS2-STR-M-023",
+    "type":"single",
+    "stem":"企业通过降低单位成本获得竞争优势的战略属于：",
+    "options":["差异化战略","集中战略","成本领先战略","多元化战略"],
+    "answer":[2],
+    "explain":"成本领先战略以降低成本作为核心竞争优势。",
+    "tags":["企业战略","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-024",
+    "type":"single",
+    "stem":"促销组合中，针对最终消费者、短期刺激购买的方式是：",
+    "options":["广告","人员推销","营业推广","公共关系"],
+    "answer":[2],
+    "explain":"营业推广以短期激励刺激消费者购买。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-HR-M-024",
+    "type":"single",
+    "stem":"绩效考核结果主要用于：",
+    "options":["岗位分析","薪酬调整和培训决策","劳动定额制定","工作设计"],
+    "answer":[1],
+    "explain":"绩效考核结果常用于薪酬调整、晋升和培训决策。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-024",
+    "type":"single",
+    "stem":"生产计划体系中，主生产计划（MPS）位于：",
+    "options":["长期计划层","中期计划层","短期计划层","作业计划层"],
+    "answer":[1],
+    "explain":"主生产计划属于中期生产计划。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-024",
+    "type":"single",
+    "stem":"在激励理论中，强调目标明确性和挑战性的理论是：",
+    "options":["需求层次理论","公平理论","期望理论","目标设置理论"],
+    "answer":[3],
+    "explain":"目标设置理论认为明确而有挑战性的目标能提高绩效。",
+    "tags":["管理学基础","中频"]
+},
+{
+    "id":"GS2-STR-M-041",
+    "type":"single",
+    "stem":"企业在分析行业竞争结构时，波特提出的五种竞争力量不包括：",
+    "options":["潜在进入者威胁","替代品威胁","供应商议价能力","政府宏观调控能力"],
+    "answer":[3],
+    "explain":"波特五力模型包括潜在进入者、替代品、供应商、购买者和现有竞争者。",
+    "tags":["企业战略","中频"]
+  },
+  {
+    "id":"GS2-STR-M-042",
+    "type":"single",
+    "stem":"企业通过不断改进产品性能和服务质量来增强竞争优势，这属于：",
+    "options":["成本领先战略","差异化战略","集中战略","收缩战略"],
+    "answer":[1],
+    "explain":"差异化战略通过提供独特价值来获得竞争优势。",
+    "tags":["企业战略","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-041",
+    "type":"single",
+    "stem":"企业在新产品开发中，风险最大、失败率最高的阶段是：",
+    "options":["创意产生","概念测试","商业分析","市场试销"],
+    "answer":[0],
+    "explain":"创意产生阶段数量多、筛选少，失败风险最高。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-042",
+    "type":"single",
+    "stem":"在价格策略中，企业根据竞争对手价格水平进行定价，属于：",
+    "options":["成本导向定价","需求导向定价","竞争导向定价","心理定价"],
+    "answer":[2],
+    "explain":"竞争导向定价以竞争对手价格为主要参考。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-043",
+    "type":"single",
+    "stem":"消费者在购买过程中，对产品形成总体印象并作出评价的阶段是：",
+    "options":["信息收集","备选方案评价","购买决策","购后评价"],
+    "answer":[1],
+    "explain":"备选方案评价阶段是消费者对不同产品进行比较和评价的阶段。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-HR-M-041",
+    "type":"single",
+    "stem":"岗位轮换制度的主要作用是：",
+    "options":["降低人工成本","提高员工技能广度","减少培训需求","降低流动率"],
+    "answer":[1],
+    "explain":"岗位轮换有助于员工掌握多种技能，提升综合能力。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-HR-M-042",
+    "type":"single",
+    "stem":"员工福利属于薪酬结构中的：",
+    "options":["基本薪酬","绩效薪酬","间接薪酬","激励薪酬"],
+    "answer":[2],
+    "explain":"福利属于间接薪酬的重要组成部分。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-HR-M-043",
+    "type":"single",
+    "stem":"期望理论认为，激励效果取决于：",
+    "options":["需要强度","公平感","努力—绩效—报酬的期望","目标难度"],
+    "answer":[2],
+    "explain":"期望理论强调努力、绩效和报酬之间的关系。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-041",
+    "type":"single",
+    "stem":"流水线生产最适合的生产类型是：",
+    "options":["单件小批生产","多品种小批生产","大量标准化生产","定制化生产"],
+    "answer":[2],
+    "explain":"流水线生产适合大量、标准化产品。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-042",
+    "type":"single",
+    "stem":"在库存分类管理中，占用资金多、价值高的物资是：",
+    "options":["A类","B类","C类","D类"],
+    "answer":[0],
+    "explain":"ABC 分类法中，A 类物资价值高、管理重点最高。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-043",
+    "type":"single",
+    "stem":"作业测定中，通过多次观察记录作业时间的方法是：",
+    "options":["工作抽样法","时间研究法","标准资料法","经验估算法"],
+    "answer":[1],
+    "explain":"时间研究法通过直接测定作业时间来制定标准。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-041",
+    "type":"single",
+    "stem":"管理者通过比较实际结果与计划目标来进行调整，这属于：",
+    "options":["计划职能","组织职能","领导职能","控制职能"],
+    "answer":[3],
+    "explain":"控制职能通过比较和纠偏实现管理目标。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-042",
+    "type":"single",
+    "stem":"矩阵制组织结构的主要缺点是：",
+    "options":["专业化程度低","权责不清、易产生冲突","缺乏灵活性","不利于资源共享"],
+    "answer":[1],
+    "explain":"矩阵制存在双重领导，易导致权责不清和冲突。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-043",
+    "type":"single",
+    "stem":"组织变革中，阻力最大的阶段通常是：",
+    "options":["解冻阶段","变革阶段","再冻结阶段","评估阶段"],
+    "answer":[0],
+    "explain":"解冻阶段需要打破原有平衡，阻力最大。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS2-STR-M-043",
+    "type":"single",
+    "stem":"企业在战略实施过程中，将战略目标分解为年度计划的做法属于：",
+    "options":["战略分析","战略选择","战略实施","战略控制"],
+    "answer":[2],
+    "explain":"将战略目标落实到具体行动属于战略实施阶段。",
+    "tags":["企业战略","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-044",
+    "type":"single",
+    "stem":"企业在促销活动中，借助媒体塑造企业形象的方式是：",
+    "options":["广告","人员推销","公共关系","营业推广"],
+    "answer":[2],
+    "explain":"公共关系强调通过媒体和社会沟通塑造形象。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-HR-M-044",
+    "type":"single",
+    "stem":"员工职业生涯管理的最终目的是：",
+    "options":["满足个人发展","减少人员流动","实现个人与组织共同发展","提高短期绩效"],
+    "answer":[2],
+    "explain":"职业生涯管理强调员工与组织的共同发展。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-044",
+    "type":"single",
+    "stem":"质量检验中，事后检验的主要缺点是：",
+    "options":["成本低","发现问题滞后","操作复杂","检验标准不统一"],
+    "answer":[1],
+    "explain":"事后检验无法预防缺陷，发现问题较晚。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-044",
+    "type":"single",
+    "stem":"领导方式中，强调下属参与决策的是：",
+    "options":["专制型","民主型","放任型","事务型"],
+    "answer":[1],
+    "explain":"民主型领导鼓励员工参与决策。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS2-STR-M-061",
+    "type":"single",
+    "stem":"企业战略控制的主要目的是：",
+    "options":["制定战略目标","比较实际结果与战略目标并纠偏","选择战略方案","进行环境分析"],
+    "answer":[1],
+    "explain":"战略控制通过比较实际执行与战略目标，及时纠偏，确保战略落地。",
+    "tags":["企业战略","中频"]
+  },
+  {
+    "id":"GS2-STR-M-062",
+    "type":"single",
+    "stem":"企业在并购后，通过整合文化、制度与流程以发挥协同效应，这一阶段属于：",
+    "options":["战略分析","战略选择","战略实施","战略评估"],
+    "answer":[2],
+    "explain":"并购后的整合属于战略实施阶段的重要内容。",
+    "tags":["企业战略","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-061",
+    "type":"single",
+    "stem":"产品差异化的核心在于：",
+    "options":["降低成本","创造独特价值","扩大渠道","增加促销投入"],
+    "answer":[1],
+    "explain":"差异化通过为顾客创造独特价值来形成竞争优势。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-062",
+    "type":"single",
+    "stem":"需求价格弹性较大的产品，企业更适合采取的定价策略是：",
+    "options":["高价策略","撇脂定价","渗透定价","成本加成定价"],
+    "answer":[2],
+    "explain":"需求弹性大时，降价可显著扩大销量，渗透定价更合适。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-063",
+    "type":"single",
+    "stem":"品牌延伸策略的主要风险是：",
+    "options":["提高成本","削弱原有品牌形象","增加渠道冲突","缩短产品生命周期"],
+    "answer":[1],
+    "explain":"不恰当的品牌延伸可能损害原有品牌形象。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-HR-M-061",
+    "type":"single",
+    "stem":"员工关系管理的核心目标是：",
+    "options":["提高劳动生产率","降低人工成本","构建和谐劳动关系","完善绩效考核"],
+    "answer":[2],
+    "explain":"员工关系管理旨在建立稳定、和谐的劳动关系。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-HR-M-062",
+    "type":"single",
+    "stem":"以岗位价值为基础确定薪酬水平的方法是：",
+    "options":["技能薪酬","绩效薪酬","岗位薪酬","年功薪酬"],
+    "answer":[2],
+    "explain":"岗位薪酬以岗位价值作为确定薪酬的依据。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-HR-M-063",
+    "type":"single",
+    "stem":"员工参与管理最直接的积极效果是：",
+    "options":["减少管理层级","提高员工满意度与责任感","降低管理成本","提高组织规模"],
+    "answer":[1],
+    "explain":"员工参与管理可增强责任感和满意度。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-061",
+    "type":"single",
+    "stem":"在运作管理中，瓶颈资源是指：",
+    "options":["成本最高的资源","利用率最低的资源","限制系统产出的资源","最先进的设备"],
+    "answer":[2],
+    "explain":"瓶颈资源限制了系统的总体产出能力。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-062",
+    "type":"single",
+    "stem":"运作战略的核心问题是：",
+    "options":["选择市场","配置运作资源","制定营销方案","确定组织文化"],
+    "answer":[1],
+    "explain":"运作战略关注运作资源的配置以支持竞争战略。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-063",
+    "type":"single",
+    "stem":"质量管理中，强调以顾客为中心的是：",
+    "options":["统计质量控制","事后检验","全面质量管理","抽样检验"],
+    "answer":[2],
+    "explain":"TQM 以顾客需求为导向，强调持续改进。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-061",
+    "type":"single",
+    "stem":"管理者在授权后仍需承担的责任是：",
+    "options":["执行责任","结果责任","操作责任","具体事务责任"],
+    "answer":[1],
+    "explain":"授权不等于免责，管理者仍对结果负责。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-062",
+    "type":"single",
+    "stem":"组织结构扁平化的主要优点是：",
+    "options":["加强控制","减少沟通层级、提高反应速度","增加专业化程度","降低员工参与度"],
+    "answer":[1],
+    "explain":"扁平化结构减少层级，提高沟通效率和反应速度。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-063",
+    "type":"single",
+    "stem":"管理创新的本质在于：",
+    "options":["技术更新","制度和方法的改进","组织规模扩大","资本投入增加"],
+    "answer":[1],
+    "explain":"管理创新强调制度、流程和方法的创新。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS2-STR-M-063",
+    "type":"single",
+    "stem":"企业在战略制定中，资源配置应优先支持：",
+    "options":["短期利润项目","核心竞争力建设","非主营业务","低风险项目"],
+    "answer":[1],
+    "explain":"战略资源配置应优先支持核心竞争力。",
+    "tags":["企业战略","中频"]
+  },
+  {
+    "id":"GS2-MKT-M-064",
+    "type":"single",
+    "stem":"企业在国际市场进入方式中，风险和控制程度均较高的是：",
+    "options":["出口","许可经营","合资经营","独资经营"],
+    "answer":[3],
+    "explain":"独资经营控制力强、风险也最高。",
+    "tags":["市场营销","中频"]
+  },
+  {
+    "id":"GS2-HR-M-064",
+    "type":"single",
+    "stem":"绩效反馈面谈的关键在于：",
+    "options":["指出错误","明确改进方向","强调奖惩","比较他人表现"],
+    "answer":[1],
+    "explain":"绩效反馈应聚焦改进方向与发展建议。",
+    "tags":["人力资源管理","中频"]
+  },
+  {
+    "id":"GS2-OPS-M-064",
+    "type":"single",
+    "stem":"运作过程改进中，持续改进思想的核心是：",
+    "options":["一次性改革","长期、渐进式改进","只依靠技术升级","依赖外部咨询"],
+    "answer":[1],
+    "explain":"持续改进强调长期、渐进的改进过程。",
+    "tags":["生产与运作管理","中频"]
+  },
+  {
+    "id":"GS2-MGT-M-064",
+    "type":"single",
+    "stem":"管理道德建设的基础是：",
+    "options":["制度约束","法律规范","个人道德与价值观","外部监督"],
+    "answer":[2],
+    "explain":"管理道德以管理者个人道德与价值观为基础。",
+    "tags":["管理学基础","中频"]
+  },
+  {
+    "id":"GS3-STR-L-001",
+    "type":"single",
+    "stem":"企业战略管理中，战略意图（Strategic Intent）强调的是：",
+    "options":["当前资源条件","长期挑战性目标","短期经营目标","外部环境约束"],
+    "answer":[1],
+    "explain":"战略意图强调超越现有资源条件的长期、富有挑战性的目标。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-002",
+    "type":"single",
+    "stem":"企业核心能力的形成关键在于：",
+    "options":["资源数量","资源整合与学习","市场规模","技术先进程度"],
+    "answer":[1],
+    "explain":"核心能力来源于对多种资源的整合和持续学习，而非单一资源。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-001",
+    "type":"single",
+    "stem":"消费者对品牌形成忠诚度后，其价格敏感性通常会：",
+    "options":["显著提高","略有提高","降低","保持不变"],
+    "answer":[2],
+    "explain":"品牌忠诚度高的消费者对价格变化不敏感。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-002",
+    "type":"single",
+    "stem":"企业通过捆绑销售方式刺激需求，其主要目的是：",
+    "options":["降低成本","提升顾客感知价值","延长产品生命周期","扩大渠道覆盖"],
+    "answer":[1],
+    "explain":"捆绑销售通过组合产品提高顾客感知价值。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-001",
+    "type":"single",
+    "stem":"能力素质模型主要用于：",
+    "options":["岗位分析","绩效考核","招聘选拔与人才发展","薪酬设计"],
+    "answer":[2],
+    "explain":"能力素质模型常用于人才选拔、培养和发展。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-002",
+    "type":"single",
+    "stem":"员工满意度与员工绩效之间的关系通常表现为：",
+    "options":["完全正相关","完全负相关","非线性关系","无任何关系"],
+    "answer":[2],
+    "explain":"员工满意度与绩效之间并非简单线性关系。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-001",
+    "type":"single",
+    "stem":"生产系统中，“柔性”主要体现为系统对以下哪种变化的适应能力：",
+    "options":["成本变化","需求和品种变化","人员流动","设备折旧"],
+    "answer":[1],
+    "explain":"生产柔性强调对需求数量和品种变化的适应能力。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-002",
+    "type":"single",
+    "stem":"在作业测定中，工作抽样法更适用于：",
+    "options":["重复性强的短周期作业","连续性生产","长周期或间歇性作业","高度自动化作业"],
+    "answer":[2],
+    "explain":"工作抽样法适合长周期、间歇性作业。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-001",
+    "type":"single",
+    "stem":"管理幅度与管理层次之间的关系通常是：",
+    "options":["正相关","负相关","无关","随机关系"],
+    "answer":[1],
+    "explain":"管理幅度越大，管理层次通常越少，二者呈负相关。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-002",
+    "type":"single",
+    "stem":"组织文化对员工行为的影响方式主要是：",
+    "options":["强制约束","正式制度","潜移默化","经济激励"],
+    "answer":[2],
+    "explain":"组织文化通过潜移默化方式影响员工行为。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-003",
+    "type":"single",
+    "stem":"企业在资源基础理论中，被认为最难模仿的资源是：",
+    "options":["有形资产","财务资源","组织文化","生产设备"],
+    "answer":[2],
+    "explain":"组织文化、知识等无形资源最难被模仿。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-003",
+    "type":"single",
+    "stem":"当产品技术更新快、市场变化大时，更适合采用的品牌策略是：",
+    "options":["单一品牌","多品牌","分类品牌","无品牌"],
+    "answer":[1],
+    "explain":"多品牌策略有利于应对快速变化和分散风险。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-003",
+    "type":"single",
+    "stem":"员工离职率过高通常首先反映的问题是：",
+    "options":["培训不足","薪酬问题","员工关系或管理问题","招聘标准过低"],
+    "answer":[2],
+    "explain":"高离职率往往与管理方式和员工关系问题相关。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-003",
+    "type":"single",
+    "stem":"在生产计划体系中，最接近实际执行层面的计划是：",
+    "options":["长期计划","主生产计划","作业计划","能力计划"],
+    "answer":[2],
+    "explain":"作业计划直接指导现场生产执行。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-003",
+    "type":"single",
+    "stem":"管理创新相较于技术创新，其突出特点是：",
+    "options":["投资大","见效慢","依赖制度和流程","以设备更新为主"],
+    "answer":[2],
+    "explain":"管理创新侧重制度、流程和方法的创新。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-004",
+    "type":"single",
+    "stem":"企业战略中“协同效应”最典型的体现是：",
+    "options":["规模经济","范围经济","学习曲线","经验曲线"],
+    "answer":[1],
+    "explain":"范围经济体现了多业务协同带来的效应。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-004",
+    "type":"single",
+    "stem":"消费者购买决策过程中，风险感知最高的阶段通常是：",
+    "options":["信息收集","备选方案评价","购买决策","购后评价"],
+    "answer":[2],
+    "explain":"购买决策阶段承担最终选择风险，风险感知最高。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-004",
+    "type":"single",
+    "stem":"绩效管理强调的是：",
+    "options":["一次性考核","持续沟通与改进","结果导向","短期激励"],
+    "answer":[1],
+    "explain":"绩效管理是一个持续沟通和改进的过程。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-004",
+    "type":"single",
+    "stem":"运作管理中，“看板管理”最典型的应用环境是：",
+    "options":["推式生产","拉式生产","单件生产","定制生产"],
+    "answer":[1],
+    "explain":"看板管理是拉式生产的重要工具。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-004",
+    "type":"single",
+    "stem":"在组织变革中，最容易被忽视但影响深远的因素是：",
+    "options":["组织结构","流程设计","组织文化","制度文本"],
+    "answer":[2],
+    "explain":"组织文化对变革成败具有深远影响。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-021",
+    "type":"single",
+    "stem":"企业战略中，“战略匹配”主要强调：",
+    "options":["战略与资源的匹配","战略与环境的匹配","战略与组织结构的匹配","战略与文化的匹配"],
+    "answer":[1],
+    "explain":"战略匹配的核心是使企业战略与外部环境条件相适应。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-022",
+    "type":"single",
+    "stem":"在企业并购中，财务协同效应主要体现在：",
+    "options":["管理效率提升","技术共享","融资成本降低","品牌影响扩大"],
+    "answer":[2],
+    "explain":"财务协同效应主要表现为融资能力增强、融资成本降低。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-021",
+    "type":"single",
+    "stem":"消费者对高参与度产品的购买决策过程通常是：",
+    "options":["简单迅速","信息收集充分、决策谨慎","冲动型购买","依赖习惯"],
+    "answer":[1],
+    "explain":"高参与度产品购买风险高，消费者决策更谨慎。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-022",
+    "type":"single",
+    "stem":"企业采用心理定价策略，其主要依据是：",
+    "options":["成本结构","消费者心理感受","竞争对手价格","市场需求弹性"],
+    "answer":[1],
+    "explain":"心理定价基于消费者的心理感受而非成本或竞争。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-021",
+    "type":"single",
+    "stem":"员工培训中，“在岗培训”的突出特点是：",
+    "options":["成本高","脱产进行","与工作实践结合紧密","理论性强"],
+    "answer":[2],
+    "explain":"在岗培训强调边工作边学习，实践性强。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-022",
+    "type":"single",
+    "stem":"组织承诺中，与员工对组织情感依附程度相关的是：",
+    "options":["规范承诺","持续承诺","情感承诺","工具性承诺"],
+    "answer":[2],
+    "explain":"情感承诺体现员工对组织的情感认同和依附。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-021",
+    "type":"single",
+    "stem":"运作系统设计中，“模块化设计”的主要优势是：",
+    "options":["降低成本","提高柔性与可维护性","缩短交货期","减少库存"],
+    "answer":[1],
+    "explain":"模块化设计提高系统柔性和维护便利性。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-022",
+    "type":"single",
+    "stem":"在服务运作管理中，顾客参与程度高的服务类型是：",
+    "options":["自助服务","专业服务","大众服务","后台服务"],
+    "answer":[0],
+    "explain":"自助服务中顾客参与程度最高。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-021",
+    "type":"single",
+    "stem":"管理者的概念技能主要体现在：",
+    "options":["解决具体技术问题","人际沟通能力","整体分析和系统思维","执行操作能力"],
+    "answer":[2],
+    "explain":"概念技能强调系统思维和整体分析能力。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-022",
+    "type":"single",
+    "stem":"组织权力中，来源于职位本身的权力是：",
+    "options":["专家权力","参照权力","法定权力","奖惩权力"],
+    "answer":[2],
+    "explain":"法定权力来自职位和组织正式授权。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-023",
+    "type":"single",
+    "stem":"企业在多元化经营中，最容易产生管理复杂化问题的是：",
+    "options":["相关多元化","不相关多元化","集中化经营","专业化经营"],
+    "answer":[1],
+    "explain":"不相关多元化业务差异大，管理复杂度最高。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-023",
+    "type":"single",
+    "stem":"品牌资产中，最核心、最基础的要素是：",
+    "options":["品牌知名度","品牌联想","品牌忠诚度","感知质量"],
+    "answer":[0],
+    "explain":"品牌知名度是品牌资产形成的基础。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-023",
+    "type":"single",
+    "stem":"员工激励中，短期激励措施更适合用于：",
+    "options":["战略目标","长期能力建设","阶段性绩效提升","组织文化塑造"],
+    "answer":[2],
+    "explain":"短期激励更适合促进阶段性绩效。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-023",
+    "type":"single",
+    "stem":"在生产系统中，提前期（Lead Time）主要受以下因素影响：",
+    "options":["库存水平","作业流程与排队情况","设备折旧","人员数量"],
+    "answer":[1],
+    "explain":"提前期主要由作业流程和排队等待决定。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-023",
+    "type":"single",
+    "stem":"领导效能理论认为，领导效果取决于：",
+    "options":["领导者个人魅力","下属成熟度","情境因素与领导方式匹配","组织规模"],
+    "answer":[2],
+    "explain":"领导效能取决于领导方式与情境的匹配程度。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-024",
+    "type":"single",
+    "stem":"企业在制定竞争战略时，应首先明确的是：",
+    "options":["竞争对手","目标顾客","自身优势与劣势","产品价格"],
+    "answer":[2],
+    "explain":"竞争战略应基于企业自身条件和核心优势。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-024",
+    "type":"single",
+    "stem":"消费者在购后评价阶段出现认知失调时，企业最应采取的措施是：",
+    "options":["忽略反馈","加强沟通与服务","立即降价","增加广告投放"],
+    "answer":[1],
+    "explain":"通过沟通和服务缓解消费者认知失调。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-024",
+    "type":"single",
+    "stem":"绩效指标设计中过多指标最可能导致的问题是：",
+    "options":["激励不足","考核成本上升、重点模糊","员工流失","目标不明确"],
+    "answer":[1],
+    "explain":"指标过多会增加成本并分散管理重点。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-024",
+    "type":"single",
+    "stem":"服务质量评价模型 SERVQUAL 关注的核心是：",
+    "options":["服务流程","服务结果","顾客期望与感知差距","服务成本"],
+    "answer":[2],
+    "explain":"SERVQUAL 模型关注顾客期望与实际感知之间的差距。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-024",
+    "type":"single",
+    "stem":"在组织激励中，非物质激励的突出优势是：",
+    "options":["成本低","效果短期","满足高层次需要","易于量化"],
+    "answer":[2],
+    "explain":"非物质激励更能满足员工的高层次需求。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-041",
+    "type":"single",
+    "stem":"企业在实施成本领先战略时，最需要警惕的风险是：",
+    "options":["规模不足","技术落后","过度削减成本导致价值下降","竞争者模仿困难"],
+    "answer":[2],
+    "explain":"成本领先若过度削减成本，可能损害产品质量和顾客价值。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-042",
+    "type":"single",
+    "stem":"企业战略评估中，强调战略是否适应环境变化的是：",
+    "options":["一致性","可行性","适应性","可接受性"],
+    "answer":[2],
+    "explain":"适应性关注战略与外部环境变化的匹配程度。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-041",
+    "type":"single",
+    "stem":"在产品生命周期理论中，利润开始明显下降通常出现在：",
+    "options":["导入期","成长期","成熟期","衰退期"],
+    "answer":[3],
+    "explain":"衰退期需求下降、利润明显下滑。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-042",
+    "type":"single",
+    "stem":"企业通过价格折扣刺激短期销量，其主要影响的是需求的：",
+    "options":["交叉弹性","长期弹性","价格弹性","收入弹性"],
+    "answer":[2],
+    "explain":"价格折扣直接影响需求的价格弹性。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-041",
+    "type":"single",
+    "stem":"以员工未来潜力为导向的评价方式是：",
+    "options":["绩效考核","能力评价","行为评价","结果评价"],
+    "answer":[1],
+    "explain":"能力评价关注员工的潜在能力和发展潜力。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-042",
+    "type":"single",
+    "stem":"员工培训中，案例教学法最适合用于：",
+    "options":["技能操作训练","态度塑造","管理能力提升","基础知识传授"],
+    "answer":[2],
+    "explain":"案例教学法适用于培养分析和管理决策能力。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-041",
+    "type":"single",
+    "stem":"在运作管理中，服务与制造的根本区别在于服务具有：",
+    "options":["不可储存性","高成本","低标准化","低技术含量"],
+    "answer":[0],
+    "explain":"服务的典型特征之一是不可储存性。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-042",
+    "type":"single",
+    "stem":"在质量改进工具中，用于识别主要问题来源的是：",
+    "options":["因果图","直方图","排列图（帕累托图）","控制图"],
+    "answer":[2],
+    "explain":"排列图用于识别少数关键问题（二八原则）。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-041",
+    "type":"single",
+    "stem":"管理者通过榜样行为影响下属的方式属于：",
+    "options":["强制影响","权力影响","示范影响","制度影响"],
+    "answer":[2],
+    "explain":"示范影响是通过榜样作用影响员工。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-042",
+    "type":"single",
+    "stem":"组织设计中，强调稳定性和规范性的结构是：",
+    "options":["有机式结构","机械式结构","矩阵结构","网络结构"],
+    "answer":[1],
+    "explain":"机械式结构强调规则、程序和稳定性。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-043",
+    "type":"single",
+    "stem":"企业在多业务经营中，为实现资源共享而设立的管理机制是：",
+    "options":["战略业务单位","共享服务中心","事业部制","项目制"],
+    "answer":[1],
+    "explain":"共享服务中心有利于多业务之间的资源共享。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-043",
+    "type":"single",
+    "stem":"消费者对品牌产生信任后，最可能表现出的行为是：",
+    "options":["频繁比较价格","品牌转换","重复购买","减少信息搜寻但不购买"],
+    "answer":[2],
+    "explain":"品牌信任促使消费者重复购买。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-043",
+    "type":"single",
+    "stem":"员工参与决策程度过高，最可能带来的问题是：",
+    "options":["激励不足","决策效率下降","员工满意度下降","组织僵化"],
+    "answer":[1],
+    "explain":"过度参与可能降低决策效率。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-043",
+    "type":"single",
+    "stem":"运作系统中，提高流程并行程度的主要目的是：",
+    "options":["降低成本","缩短提前期","提高库存","增加人员"],
+    "answer":[1],
+    "explain":"流程并行可减少等待时间，缩短提前期。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-043",
+    "type":"single",
+    "stem":"在管理沟通中，反馈的主要作用是：",
+    "options":["传递命令","纠正偏差","建立权威","提高控制力度"],
+    "answer":[1],
+    "explain":"反馈用于检查理解并纠正偏差。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-044",
+    "type":"single",
+    "stem":"企业通过建立进入壁垒以限制竞争者进入市场，其根本目的是：",
+    "options":["扩大市场规模","保护竞争优势","提高行业利润","增加产品差异"],
+    "answer":[1],
+    "explain":"进入壁垒的根本目的是保护企业的竞争优势。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-044",
+    "type":"single",
+    "stem":"在整合营销传播中，被视为核心的是：",
+    "options":["广告","促销","一致的传播信息","传播渠道数量"],
+    "answer":[2],
+    "explain":"整合营销传播强调信息一致性。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-044",
+    "type":"single",
+    "stem":"员工能力提升最稳定、长期的方式是：",
+    "options":["外部招聘","短期培训","系统化培养","绩效考核"],
+    "answer":[2],
+    "explain":"系统化培养有利于员工长期能力提升。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-044",
+    "type":"single",
+    "stem":"运作战略中，“柔性优先”通常更适用于：",
+    "options":["需求稳定市场","高度不确定市场","完全竞争市场","规模经济明显行业"],
+    "answer":[1],
+    "explain":"需求不确定性高时，柔性战略更有优势。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-044",
+    "type":"single",
+    "stem":"管理控制中，事前控制的典型形式是：",
+    "options":["绩效考核","预算控制","偏差分析","事后审计"],
+    "answer":[1],
+    "explain":"预算控制属于事前控制手段。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-061",
+    "type":"single",
+    "stem":"企业在竞争战略中采用“跟随者战略”的主要前提是：",
+    "options":["技术领先","市场高度不确定","行业标准已形成","资源极其充足"],
+    "answer":[2],
+    "explain":"跟随者战略通常在行业标准已形成、技术路径较明确时更为可行。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-062",
+    "type":"single",
+    "stem":"企业通过长期合同锁定关键供应商，其主要战略意图是：",
+    "options":["降低交易不确定性","降低产品差异","提高品牌溢价","扩大市场需求"],
+    "answer":[0],
+    "explain":"长期合同有助于降低交易不确定性与机会主义风险。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-061",
+    "type":"single",
+    "stem":"当市场需求波动较大时，更适合采用的促销节奏是：",
+    "options":["持续促销","间歇性促销","价格固定","减少促销"],
+    "answer":[1],
+    "explain":"需求波动大时，间歇性促销更有利于灵活应对市场变化。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-062",
+    "type":"single",
+    "stem":"消费者对服务质量的评价往往更依赖于：",
+    "options":["技术指标","结果可量化程度","服务过程体验","价格水平"],
+    "answer":[2],
+    "explain":"服务具有不可储存和不可分离性，顾客更关注过程体验。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-061",
+    "type":"single",
+    "stem":"在组织发展中，最容易导致“人才断层”的管理失误是：",
+    "options":["过度授权","忽视继任计划","培训投入过多","绩效要求过高"],
+    "answer":[1],
+    "explain":"缺乏继任计划容易导致关键岗位出现人才断层。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-062",
+    "type":"single",
+    "stem":"员工工作满意但绩效不高，最可能的原因是：",
+    "options":["激励不足","能力与岗位不匹配","薪酬偏低","工作压力过大"],
+    "answer":[1],
+    "explain":"满意度高但绩效低，常源于能力与岗位要求不匹配。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-061",
+    "type":"single",
+    "stem":"在运作系统中，通过减少批量大小最直接改善的是：",
+    "options":["设备利用率","库存水平","提前期","质量稳定性"],
+    "answer":[2],
+    "explain":"减少批量可降低等待时间，从而缩短提前期。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-062",
+    "type":"single",
+    "stem":"服务运作中，前台与后台分离的主要目的是：",
+    "options":["提高服务柔性","降低顾客参与度","提高效率与一致性","减少人员数量"],
+    "answer":[2],
+    "explain":"前后台分离有利于提高运作效率和服务一致性。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-061",
+    "type":"single",
+    "stem":"管理者在冲突处理中，强调各方共赢的方式是：",
+    "options":["回避","迁就","强制","合作"],
+    "answer":[3],
+    "explain":"合作型冲突处理追求双赢结果。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-062",
+    "type":"single",
+    "stem":"组织学习中，“双环学习”强调：",
+    "options":["改进操作方法","修正行为偏差","反思并改变原有假设","重复成功经验"],
+    "answer":[2],
+    "explain":"双环学习不仅修正行为，还反思和改变原有假设。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-063",
+    "type":"single",
+    "stem":"企业在平台型战略中，最关键的成功因素是：",
+    "options":["资产规模","用户网络效应","成本领先","组织层级"],
+    "answer":[1],
+    "explain":"平台战略的核心在于用户规模和网络效应。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-063",
+    "type":"single",
+    "stem":"品牌危机发生后，企业最不应采取的做法是：",
+    "options":["迅速回应","信息透明","推卸责任","加强沟通"],
+    "answer":[2],
+    "explain":"推卸责任会进一步损害品牌信任。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-063",
+    "type":"single",
+    "stem":"在团队管理中，最容易引发“搭便车”问题的是：",
+    "options":["个人绩效考核","团队绩效考核","目标管理","能力评价"],
+    "answer":[1],
+    "explain":"单纯的团队绩效考核容易导致搭便车行为。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-063",
+    "type":"single",
+    "stem":"运作管理中，“柔性制造系统（FMS）”的主要优势是：",
+    "options":["低成本","高自动化","兼顾效率与柔性","简单易维护"],
+    "answer":[2],
+    "explain":"FMS 能在保持效率的同时提供较高柔性。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-063",
+    "type":"single",
+    "stem":"管理决策中，“满意原则”主要适用于：",
+    "options":["完全理性情境","信息不完全情境","战略决策","程序化决策"],
+    "answer":[1],
+    "explain":"在信息不完全条件下，管理者往往采用满意原则。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS3-STR-L-064",
+    "type":"single",
+    "stem":"企业通过知识共享机制提升整体能力，其核心逻辑是：",
+    "options":["规模经济","学习效应","范围经济","经验曲线"],
+    "answer":[1],
+    "explain":"知识共享带来学习效应，提升组织整体能力。",
+    "tags":["企业战略","低频","易混"]
+  },
+  {
+    "id":"GS3-MKT-L-064",
+    "type":"single",
+    "stem":"当消费者对价格高度敏感时，品牌溢价能力通常：",
+    "options":["增强","保持不变","减弱","转为负值"],
+    "answer":[2],
+    "explain":"价格敏感性高会削弱品牌溢价能力。",
+    "tags":["市场营销","低频","易混"]
+  },
+  {
+    "id":"GS3-HR-L-064",
+    "type":"single",
+    "stem":"组织中形成“沉默文化”的直接后果是：",
+    "options":["冲突增加","创新能力下降","员工满意度提高","决策速度加快"],
+    "answer":[1],
+    "explain":"沉默文化抑制信息交流，削弱创新能力。",
+    "tags":["人力资源管理","低频","易混"]
+  },
+  {
+    "id":"GS3-OPS-L-064",
+    "type":"single",
+    "stem":"运作系统中，通过标准化最直接提升的是：",
+    "options":["柔性","一致性","创新性","差异化"],
+    "answer":[1],
+    "explain":"标准化有助于提高一致性和稳定性。",
+    "tags":["生产与运作管理","低频","易混"]
+  },
+  {
+    "id":"GS3-MGT-L-064",
+    "type":"single",
+    "stem":"在组织激励中，最容易被忽视但长期有效的因素是：",
+    "options":["薪酬","晋升","工作意义感","奖金"],
+    "answer":[2],
+    "explain":"工作意义感属于内在激励，长期效果显著。",
+    "tags":["管理学基础","低频","易混"]
+  },
+  {
+    "id":"GS4-SYN-001",
+    "type":"single",
+    "stem":"某制造企业近年来市场需求波动加大、产品更新速度加快。为在控制成本的同时提升响应能力，该企业在运作战略上最优先考虑的是：",
+    "options":["扩大规模以形成规模经济","提高生产系统柔性","增加安全库存","延长生产计划周期"],
+    "answer":[1],
+    "explain":"需求不确定、更新快的环境下，应优先提升柔性而非规模或库存。",
+    "tags":["综合","运作管理","战略"]
+  },
+  {
+    "id":"GS4-SYN-002",
+    "type":"single",
+    "stem":"某企业在实施多元化战略后发现，不同业务单元之间协同不足、管理成本上升。为改善该问题，管理层最应优先采取的措施是：",
+    "options":["进一步扩大业务规模","建立共享服务或协同机制","收紧财务预算","提高各业务单元独立性"],
+    "answer":[1],
+    "explain":"多元化后的关键在于通过共享机制实现协同效应。",
+    "tags":["综合","企业战略","管理"]
+  },
+  {
+    "id":"GS4-SYN-003",
+    "type":"single",
+    "stem":"某企业员工满意度调查结果较高，但整体绩效提升不明显。结合人力资源管理理论，最可能的原因是：",
+    "options":["激励强度不足","能力与岗位要求不匹配","考核制度过于严格","员工参与度过低"],
+    "answer":[1],
+    "explain":"满意度高但绩效不高，往往源于能力与岗位匹配问题。",
+    "tags":["综合","人力资源管理"]
+  },
+  {
+    "id":"GS4-SYN-004",
+    "type":"single",
+    "stem":"某企业在成熟市场中经营多年，品牌知名度高，但近年来利润率持续下降。结合营销与战略理论，最合理的调整方向是：",
+    "options":["加大价格竞争","通过差异化提升品牌价值","缩减市场覆盖范围","减少营销投入"],
+    "answer":[1],
+    "explain":"成熟市场利润下降，应通过差异化而非价格战应对。",
+    "tags":["综合","市场营销","战略"]
+  },
+  {
+    "id":"GS4-SYN-005",
+    "type":"single",
+    "stem":"某公司在推行扁平化组织结构后，决策速度明显提高，但部门间协调问题增多。对此，管理层最合适的做法是：",
+    "options":["恢复原有层级结构","加强跨部门沟通与流程协调","集中决策权","减少授权程度"],
+    "answer":[1],
+    "explain":"扁平化需配套横向沟通与流程协调机制。",
+    "tags":["综合","管理学基础"]
+  },
+  {
+    "id":"GS4-SYN-006",
+    "type":"single",
+    "stem":"某企业准备推出技术含量较高的新产品，市场竞争者较少，但产品生命周期可能较短。最适合的定价策略是：",
+    "options":["渗透定价","撇脂定价","成本加成定价","竞争导向定价"],
+    "answer":[1],
+    "explain":"高技术、竞争少、生命周期短，适合撇脂定价。",
+    "tags":["综合","市场营销"]
+  },
+  {
+    "id":"GS4-SYN-007",
+    "type":"single",
+    "stem":"在战略实施过程中，某企业发现外部环境发生重大变化，原有战略不再适应。此时最关键的管理活动是：",
+    "options":["战略分析","战略控制与调整","战略选择","战略评估总结"],
+    "answer":[1],
+    "explain":"环境变化时，应通过战略控制及时调整战略方向。",
+    "tags":["综合","企业战略"]
+  },
+  {
+    "id":"GS4-SYN-008",
+    "type":"single",
+    "stem":"某生产系统中瓶颈工序长期超负荷运行。若不增加设备投资，管理者最有效的短期改进措施是：",
+    "options":["提高非瓶颈工序效率","优化作业排序与排队管理","增加原材料库存","降低产品质量标准"],
+    "answer":[1],
+    "explain":"瓶颈管理强调围绕瓶颈优化流程与作业安排。",
+    "tags":["综合","运作管理"]
+  },
+  {
+    "id":"GS4-SYN-009",
+    "type":"single",
+    "stem":"某企业在绩效考核中指标设置过多，员工普遍反映“抓不住重点”。结合绩效管理原则，最优改进方向是：",
+    "options":["增加考核频率","减少指标数量、突出关键指标","提高考核难度","取消定量指标"],
+    "answer":[1],
+    "explain":"绩效指标应突出关键少数，避免过度复杂。",
+    "tags":["综合","人力资源管理"]
+  },
+  {
+    "id":"GS4-SYN-010",
+    "type":"single",
+    "stem":"某企业希望通过企业文化建设增强员工凝聚力。相比制度和口号，更有效的长期做法是：",
+    "options":["加强奖惩制度","高层管理者以身作则","频繁开展宣传活动","增加物质激励"],
+    "answer":[1],
+    "explain":"文化建设最关键的是管理者的示范作用。",
+    "tags":["综合","管理学基础"]
+  },
+  {
+    "id":"GS4-SYN-011",
+    "type":"single",
+    "stem":"某企业在国际市场进入中，既希望控制核心技术，又希望分担风险，较为合适的进入方式是：",
+    "options":["出口","许可经营","合资经营","独资经营"],
+    "answer":[2],
+    "explain":"合资经营在控制与风险之间取得平衡。",
+    "tags":["综合","市场营销","战略"]
+  },
+  {
+    "id":"GS4-SYN-012",
+    "type":"single",
+    "stem":"某企业通过长期培训和岗位轮换逐步提升员工综合能力，其人力资源管理理念更接近于：",
+    "options":["短期激励导向","成本控制导向","长期能力建设导向","结果导向管理"],
+    "answer":[2],
+    "explain":"系统培训与轮换体现长期能力建设导向。",
+    "tags":["综合","人力资源管理"]
+  },
+  {
+    "id":"GS4-SYN-013",
+    "type":"single",
+    "stem":"在产品成熟期，企业为维持市场份额并延缓衰退，最常见的综合策略是：",
+    "options":["减少促销投入","产品改进与促销强化","大幅提价","退出市场"],
+    "answer":[1],
+    "explain":"成熟期常通过改进产品与促销维持竞争力。",
+    "tags":["综合","市场营销"]
+  },
+  {
+    "id":"GS4-SYN-014",
+    "type":"single",
+    "stem":"某企业实施矩阵制结构后，员工经常出现“听谁的”困惑。为缓解该问题，最关键的是：",
+    "options":["减少项目数量","明确权责与沟通机制","取消职能部门","强化绩效考核"],
+    "answer":[1],
+    "explain":"矩阵制的核心问题是权责与沟通协调。",
+    "tags":["综合","管理学基础"]
+  },
+  {
+    "id":"GS4-SYN-015",
+    "type":"single",
+    "stem":"某企业在制定竞争战略时，将重点放在降低单位成本、提高效率上，其核心竞争战略是：",
+    "options":["差异化战略","集中战略","成本领先战略","多元化战略"],
+    "answer":[2],
+    "explain":"以低成本和高效率为核心的是成本领先战略。",
+    "tags":["综合","企业战略"]
+  },
+  {
+    "id":"GS4-SYN-016",
+    "type":"single",
+    "stem":"在服务运作中，为提高顾客感知质量，企业最应重点管理的是：",
+    "options":["后台流程","服务过程体验","服务成本","服务标准文本"],
+    "answer":[1],
+    "explain":"顾客对服务质量高度依赖过程体验。",
+    "tags":["综合","运作管理"]
+  },
+  {
+    "id":"GS4-SYN-017",
+    "type":"single",
+    "stem":"某企业在组织变革中忽视员工情绪管理，导致阻力增大。结合变革理论，最被忽视但关键的因素是：",
+    "options":["组织结构","技术系统","组织文化","流程设计"],
+    "answer":[2],
+    "explain":"文化和情绪因素对变革成败影响深远。",
+    "tags":["综合","管理学基础"]
+  },
+  {
+    "id":"GS4-SYN-018",
+    "type":"single",
+    "stem":"某企业通过知识共享平台提升整体创新能力，其背后的管理逻辑是：",
+    "options":["规模经济","学习效应","范围经济","经验曲线"],
+    "answer":[1],
+    "explain":"知识共享促进组织学习效应。",
+    "tags":["综合","企业战略"]
+  },
+  {
+    "id":"GS4-SYN-019",
+    "type":"single",
+    "stem":"在绩效反馈面谈中，管理者最不恰当的做法是：",
+    "options":["聚焦改进方向","强调未来目标","只讨论结果不讨论过程","倾听员工意见"],
+    "answer":[2],
+    "explain":"绩效反馈应兼顾过程与改进，而非只谈结果。",
+    "tags":["综合","人力资源管理"]
+  },
+  {
+    "id":"GS4-SYN-020",
+    "type":"single",
+    "stem":"某企业在高度不确定的市场环境中经营，其总体管理风格更适合偏向：",
+    "options":["严格控制","程序化管理","灵活授权与权变管理","高度集权"],
+    "answer":[2],
+    "explain":"不确定环境下，更需要灵活授权和权变管理。",
+    "tags":["综合","管理","战略"]
+  },
+  {
+    "id":"GS4-SYN-021",
+    "type":"single",
+    "stem":"某企业在实施成本领先战略过程中，发现产品投诉率明显上升。若企业希望在不放弃成本优势的前提下改善该问题，最合理的做法是：",
+    "options":["全面提高产品配置","有选择地提高关键质量环节投入","转向差异化战略","提高产品价格"],
+    "answer":[1],
+    "explain":"成本领先并非忽视质量，应在关键环节有针对性地投入。",
+    "tags":["综合","企业战略","运作管理"]
+  },
+  {
+    "id":"GS4-SYN-022",
+    "type":"single",
+    "stem":"某企业在快速扩张过程中，管理层发现中层管理者执行力不足。结合管理理论，最优先改进的管理环节是：",
+    "options":["战略制定","组织结构与授权","企业文化建设","绩效考核频率"],
+    "answer":[1],
+    "explain":"执行力问题往往源于结构、职责与授权不清。",
+    "tags":["综合","管理学基础"]
+  },
+  {
+    "id":"GS4-SYN-023",
+    "type":"single",
+    "stem":"某公司在新产品上市初期，通过大量广告迅速提升知名度，但销量增长有限。最可能的原因是：",
+    "options":["广告投入不足","渠道覆盖不足","产品生命周期过短","市场需求不存在"],
+    "answer":[1],
+    "explain":"知名度提升但销量不佳，常见原因是渠道不到位。",
+    "tags":["综合","市场营销"]
+  },
+  {
+    "id":"GS4-SYN-024",
+    "type":"single",
+    "stem":"某企业希望通过绩效管理促进长期能力建设，但现行制度过于强调短期结果。最合理的调整方向是：",
+    "options":["提高奖金比例","引入发展性绩效指标","减少绩效考核次数","取消绩效排名"],
+    "answer":[1],
+    "explain":"发展性指标有助于引导长期能力建设。",
+    "tags":["综合","人力资源管理"]
+  },
+  {
+    "id":"GS4-SYN-025",
+    "type":"single",
+    "stem":"某制造企业为缩短交货期而增加库存，结果资金压力明显加大。结合运作管理思想，更合理的改进思路是：",
+    "options":["继续增加库存","优化流程与瓶颈管理","降低产品质量标准","减少产品种类"],
+    "answer":[1],
+    "explain":"缩短交货期应优先从流程与瓶颈入手，而非简单加库存。",
+    "tags":["综合","运作管理"]
+  },
+  {
+    "id":"GS4-SYN-026",
+    "type":"single",
+    "stem":"某企业在多元化经营中，不同业务对总部支持需求差异较大。最有利于提高整体效率的组织安排是：",
+    "options":["统一管理所有职能","完全放权给业务单元","建立共享服务中心","频繁调整组织结构"],
+    "answer":[2],
+    "explain":"共享服务中心有助于兼顾效率与灵活性。",
+    "tags":["综合","企业战略","管理"]
+  },
+  {
+    "id":"GS4-SYN-027",
+    "type":"single",
+    "stem":"某企业在员工激励中发现，单纯提高薪酬并未显著提升积极性。结合激励理论，最可能的原因是：",
+    "options":["薪酬水平仍然偏低","缺乏内在激励因素","绩效考核不公平","员工需求层次较低"],
+    "answer":[1],
+    "explain":"内在激励不足时，单纯加薪效果有限。",
+    "tags":["综合","人力资源管理"]
+  },
+  {
+    "id":"GS4-SYN-028",
+    "type":"single",
+    "stem":"某企业在不确定环境中仍采用高度集权决策，结果市场反应迟缓。最合理的改进方向是：",
+    "options":["加强事前控制","提高信息系统投入","适度分权并强化协调","延长决策周期"],
+    "answer":[2],
+    "explain":"不确定环境下需提高灵活性，适度分权更有利。",
+    "tags":["综合","管理学基础"]
+  },
+  {
+    "id":"GS4-SYN-029",
+    "type":"single",
+    "stem":"某企业品牌延伸失败，消费者对新产品产生负面联想。该现象最直接反映的问题是：",
+    "options":["市场调研不足","原品牌定位不清","延伸与原品牌契合度不足","促销力度不够"],
+    "answer":[2],
+    "explain":"品牌延伸的关键风险在于与原品牌核心价值不匹配。",
+    "tags":["综合","市场营销"]
+  },
+  {
+    "id":"GS4-SYN-030",
+    "type":"single",
+    "stem":"某企业希望通过流程再造显著提升效率。根据管理实践，最可能导致失败的原因是：",
+    "options":["技术投入不足","忽视员工参与与文化因素","目标设定过高","流程设计过于复杂"],
+    "answer":[1],
+    "explain":"流程再造若忽视人员和文化因素，失败风险极高。",
+    "tags":["综合","管理学基础"]
+  },
+  {
+    "id":"GS4-SYN-031",
+    "type":"single",
+    "stem":"某企业在国际化过程中选择先出口、后合资、再独资的路径，其核心考虑是：",
+    "options":["市场规模变化","逐步控制风险与学习","政府政策限制","资本成本变化"],
+    "answer":[1],
+    "explain":"渐进式国际化有利于学习并逐步控制风险。",
+    "tags":["综合","战略","市场营销"]
+  },
+  {
+    "id":"GS4-SYN-032",
+    "type":"single",
+    "stem":"某企业在质量管理中发现返工率高、投诉集中。若要快速找出主要问题来源，最有效的工具是：",
+    "options":["控制图","因果图","排列图（帕累托图）","直方图"],
+    "answer":[2],
+    "explain":"排列图有助于识别主要问题来源。",
+    "tags":["综合","运作管理"]
+  },
+  {
+    "id":"GS4-SYN-033",
+    "type":"single",
+    "stem":"某企业在员工培训中强调案例分析和情景模拟，其主要目标是：",
+    "options":["知识记忆","技能操作","管理决策能力提升","态度塑造"],
+    "answer":[2],
+    "explain":"案例与情景模拟适合提升管理决策能力。",
+    "tags":["综合","人力资源管理"]
+  },
+  {
+    "id":"GS4-SYN-034",
+    "type":"single",
+    "stem":"某企业在战略制定中过度依赖过去成功经验，忽视环境变化，最容易导致的问题是：",
+    "options":["执行困难","战略惯性","资源浪费","组织冲突"],
+    "answer":[1],
+    "explain":"路径依赖会导致战略惯性。",
+    "tags":["综合","企业战略"]
+  },
+  {
+    "id":"GS4-SYN-035",
+    "type":"single",
+    "stem":"某服务企业希望提升顾客满意度，但单纯增加员工数量效果有限。最应优先改进的是：",
+    "options":["服务流程设计","服务价格","广告宣传","后台技术系统"],
+    "answer":[0],
+    "explain":"服务满意度高度依赖流程与体验设计。",
+    "tags":["综合","运作管理"]
+  },
+  {
+    "id":"GS4-SYN-036",
+    "type":"single",
+    "stem":"某企业在绩效管理中强调团队合作，但员工个人积极性下降。最合理的改进措施是：",
+    "options":["完全改为个人考核","完全取消个人考核","引入个人与团队相结合的考核","降低绩效权重"],
+    "answer":[2],
+    "explain":"团队与个人相结合可兼顾协作与激励。",
+    "tags":["综合","人力资源管理"]
+  },
+  {
+    "id":"GS4-SYN-037",
+    "type":"single",
+    "stem":"某企业为提升组织学习能力，鼓励跨部门交流与项目合作，其核心管理目标是：",
+    "options":["降低成本","加快决策","促进知识共享","强化控制"],
+    "answer":[2],
+    "explain":"跨部门合作有助于知识共享和学习。",
+    "tags":["综合","管理","战略"]
+  },
+  {
+    "id":"GS4-SYN-038",
+    "type":"single",
+    "stem":"某企业在不确定环境下采用权变管理，其核心思想是：",
+    "options":["坚持统一制度","根据情境灵活调整管理方式","强化控制","减少授权"],
+    "answer":[1],
+    "explain":"权变管理强调情境适配。",
+    "tags":["综合","管理学基础"]
+  },
+  {
+    "id":"GS4-SYN-039",
+    "type":"single",
+    "stem":"某企业在运作管理中强调标准化，其最直接的战略收益是：",
+    "options":["提升柔性","提高一致性与稳定性","促进差异化","缩短产品生命周期"],
+    "answer":[1],
+    "explain":"标准化最直接提升一致性与稳定性。",
+    "tags":["综合","运作管理"]
+  },
+  {
+    "id":"GS4-SYN-040",
+    "type":"single",
+    "stem":"某企业在企业文化建设中长期收效甚微，最可能的根本原因是：",
+    "options":["宣传不足","制度不完善","管理层行为与文化口号不一致","员工参与度不足"],
+    "answer":[2],
+    "explain":"文化失效多因“说一套、做一套”。",
+    "tags":["综合","管理学基础"]
+  },
+  {
+    "id":"GS4-SYN-041",
+    "type":"single",
+    "stem":"某企业在竞争加剧的环境中同时推进成本控制与差异化，结果两头不讨好。该问题最准确的判断是：",
+    "options":["执行不到位","战略目标不清","陷入“夹在中间”困境","外部环境变化过快"],
+    "answer":[2],
+    "explain":"同时追求成本领先与差异化但缺乏清晰取舍，易陷入“夹在中间”。",
+    "tags":["综合","企业战略"]
+  },
+  {
+    "id":"GS4-SYN-042",
+    "type":"single",
+    "stem":"某企业在绩效考核中强调结果，但忽视过程控制，导致违规风险上升。最合理的改进是：",
+    "options":["降低绩效要求","加强过程指标与合规控制","提高奖励力度","减少考核频率"],
+    "answer":[1],
+    "explain":"结果导向需配套过程与合规控制，防止短期行为。",
+    "tags":["综合","人力资源管理","管理"]
+  },
+  {
+    "id":"GS4-SYN-043",
+    "type":"single",
+    "stem":"某企业在服务质量改进中，技术系统已较完善，但顾客满意度仍不高。最可能被忽视的因素是：",
+    "options":["价格水平","员工服务态度与沟通","服务流程标准","后台效率"],
+    "answer":[1],
+    "explain":"服务满意度高度依赖前台人员的态度与互动。",
+    "tags":["综合","运作管理","管理"]
+  },
+  {
+    "id":"GS4-SYN-044",
+    "type":"single",
+    "stem":"某企业在战略调整中频繁更换方向，员工无所适从。该现象最直接反映的问题是：",
+    "options":["组织僵化","战略控制不足","战略稳定性与一致性不足","外部环境不确定"],
+    "answer":[2],
+    "explain":"频繁调整会削弱战略一致性与执行力。",
+    "tags":["综合","企业战略"]
+  },
+  {
+    "id":"GS4-SYN-045",
+    "type":"single",
+    "stem":"某企业为提升创新能力，给予员工更大自主权，但短期内效率有所下降。对此最恰当的理解是：",
+    "options":["管理失败","激励失效","创新型管理的阶段性成本","员工能力不足"],
+    "answer":[2],
+    "explain":"提升创新往往伴随短期效率下降的阶段性成本。",
+    "tags":["综合","管理学基础"]
+  },
+  {
+    "id":"GS4-SYN-046",
+    "type":"single",
+    "stem":"某企业在国际市场采用标准化产品策略，结果在部分国家销售不佳。最合理的改进方向是：",
+    "options":["全面本地化","在关键要素上进行适度本地化","退出该市场","提高价格"],
+    "answer":[1],
+    "explain":"国际营销常需在标准化与本地化之间取得平衡。",
+    "tags":["综合","市场营销","战略"]
+  },
+  {
+    "id":"GS4-SYN-047",
+    "type":"single",
+    "stem":"某企业在运作改进中重点投入自动化设备，但整体绩效改善有限。最可能的原因是：",
+    "options":["设备选型错误","忽视流程与人员配套","投资规模不足","市场需求不足"],
+    "answer":[1],
+    "explain":"技术投入需与流程、人员和制度配套。",
+    "tags":["综合","运作管理","管理"]
+  },
+  {
+    "id":"GS4-SYN-048",
+    "type":"single",
+    "stem":"某企业在并购后保留被并购企业原有文化，导致整合缓慢。该做法的主要风险是：",
+    "options":["员工流失","协同效应难以实现","管理成本上升","品牌价值下降"],
+    "answer":[1],
+    "explain":"文化不整合会削弱并购的协同效应。",
+    "tags":["综合","企业战略","管理"]
+  },
+  {
+    "id":"GS4-SYN-049",
+    "type":"single",
+    "stem":"某企业在目标管理中目标设置过高，员工普遍产生挫败感。根据目标设置理论，最合理的调整是：",
+    "options":["降低目标难度","取消目标考核","设置具有挑战但可实现的目标","只设置长期目标"],
+    "answer":[2],
+    "explain":"有效目标应具有挑战性但可实现。",
+    "tags":["综合","人力资源管理"]
+  },
+  {
+    "id":"GS4-SYN-050",
+    "type":"single",
+    "stem":"某企业在流程标准化后发现客户个性化需求难以满足。最优的综合策略是：",
+    "options":["放弃标准化","提高价格","在标准化基础上引入模块化","扩大库存"],
+    "answer":[2],
+    "explain":"模块化可在标准化基础上兼顾个性化。",
+    "tags":["综合","运作管理"]
+  },
+  {
+    "id":"GS4-SYN-051",
+    "type":"single",
+    "stem":"某企业在企业文化宣贯中大量使用口号，但员工行为改变有限。最有效的补充措施是：",
+    "options":["增加培训次数","完善制度约束","管理者示范与制度配套","提高物质激励"],
+    "answer":[2],
+    "explain":"文化需通过示范与制度共同落地。",
+    "tags":["综合","管理学基础"]
+  },
+  {
+    "id":"GS4-SYN-052",
+    "type":"single",
+    "stem":"某企业在绩效管理中发现“唯指标论”现象，导致部门间协作下降。最合理的调整是：",
+    "options":["减少指标数量","引入跨部门协同指标","取消绩效考核","提高指标权重"],
+    "answer":[1],
+    "explain":"协同指标可缓解部门本位主义。",
+    "tags":["综合","人力资源管理","管理"]
+  },
+  {
+    "id":"GS4-SYN-053",
+    "type":"single",
+    "stem":"某企业在新业务探索中设立独立团队以避免主业干扰，该做法最符合的管理思想是：",
+    "options":["规模经济","结构分离","集中控制","流程再造"],
+    "answer":[1],
+    "explain":"结构分离有助于新业务探索与创新。",
+    "tags":["综合","企业战略","管理"]
+  },
+  {
+    "id":"GS4-SYN-054",
+    "type":"single",
+    "stem":"某企业在市场细分中选择规模较小但增长快的细分市场，其主要战略逻辑是：",
+    "options":["成本优势","先发优势","集中资源形成优势","规避竞争"],
+    "answer":[2],
+    "explain":"集中战略通过聚焦形成竞争优势。",
+    "tags":["综合","市场营销","战略"]
+  },
+  {
+    "id":"GS4-SYN-055",
+    "type":"single",
+    "stem":"某企业在变革初期未充分沟通变革原因，导致员工抵触情绪强烈。该问题主要出在：",
+    "options":["技术方案","激励机制","变革解冻阶段","变革评估阶段"],
+    "answer":[2],
+    "explain":"解冻阶段的沟通与认知建立至关重要。",
+    "tags":["综合","管理学基础"]
+  },
+  {
+    "id":"GS4-SYN-056",
+    "type":"single",
+    "stem":"某企业在国际市场中通过与当地伙伴合作快速进入市场，其主要优势是：",
+    "options":["完全控制","降低风险并加快学习","利润最大化","避免文化差异"],
+    "answer":[1],
+    "explain":"合作进入有助于分担风险并加速学习。",
+    "tags":["综合","市场营销","战略"]
+  },
+  {
+    "id":"GS4-SYN-057",
+    "type":"single",
+    "stem":"某企业在运作绩效改进中优先解决瓶颈问题，其遵循的核心管理思想是：",
+    "options":["全面质量管理","约束理论","精益生产","规模经济"],
+    "answer":[1],
+    "explain":"约束理论强调围绕瓶颈进行系统改进。",
+    "tags":["综合","运作管理"]
+  },
+  {
+    "id":"GS4-SYN-058",
+    "type":"single",
+    "stem":"某企业在激励设计中更强调成就感与成长机会，其激励取向更偏向：",
+    "options":["外在激励","物质激励","内在激励","短期激励"],
+    "answer":[2],
+    "explain":"成就感与成长属于内在激励。",
+    "tags":["综合","人力资源管理"]
+  },
+  {
+    "id":"GS4-SYN-059",
+    "type":"single",
+    "stem":"某企业在战略执行中，战略目标明确但行动方案模糊。最优先补强的是：",
+    "options":["战略分析","战略实施计划与分解","战略评估","战略愿景"],
+    "answer":[1],
+    "explain":"战略需通过清晰的实施与分解才能落地。",
+    "tags":["综合","企业战略"]
+  },
+  {
+    "id":"GS4-SYN-060",
+    "type":"single",
+    "stem":"某企业在高度竞争行业中仍保持较高盈利能力，其最可能的根本原因是：",
+    "options":["行业进入壁垒高","政府保护","形成了可持续竞争优势","短期市场波动"],
+    "answer":[2],
+    "explain":"长期高盈利通常源于可持续竞争优势。",
+    "tags":["综合","企业战略"]
+  }
+]
+;
+
+/* ======== 存储键 ======== */
+const STORE_KEY = "ECO_STAGE_GAME_V1";
+
+/* ======== 工具函数 ======== */
+const $ = (id)=>document.getElementById(id);
+const shuffle = (arr) => {
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+};
+const nowMs = ()=>Date.now();
+const pad2 = (n)=> String(n).padStart(2,"0");
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORE_KEY);
+    if(!raw) return null;
+    return JSON.parse(raw);
+  }catch(e){ return null; }
+}
+function saveState(s){
+  localStorage.setItem(STORE_KEY, JSON.stringify(s));
+}
+function clearState(){
+  localStorage.removeItem(STORE_KEY);
+}
+
+/* ======== 游戏状态 ======== */
+let mode = "stage"; // stage | review
+let timer = null;
+
+let state = loadState() || {
+  stageIndex: 1,
+  perStage: 10,
+  passScore: 70,
+  timeLimitMin: 0,
+  // current stage run
+  run: null,
+  // wrong book (ids)
+  wrong: [],
+  // stats
+  totalAnswered: 0,
+  totalCorrect: 0
+};
+
+function bankInfo(){
+  const types = {single:0,multi:0};
+  for(const q of QUESTION_BANK) types[q.type] = (types[q.type]||0)+1;
+  return `题库：${QUESTION_BANK.length} 题（单选${types.single||0} / 多选${types.multi||0}）`;
+}
+
+/* ======== UI 绑定 ======== */
+const tagStage = $("tagStage");
+const tagMode = $("tagMode");
+const bankInfoEl = $("bankInfo");
+
+const perStageEl = $("perStage");
+const passScoreEl = $("passScore");
+const timeLimitEl = $("timeLimit");
+
+const btnStart = $("btnStart");
+const btnSkip = $("btnSkip");
+const btnNext = $("btnNext");
+const btnSubmit = $("btnSubmit");
+const btnReview = $("btnReview");
+const btnResetProgress = $("btnResetProgress");
+const btnImport = $("btnImport");
+const btnExportWrong = $("btnExportWrong");
+
+const qMeta = $("qMeta");
+const qStem = $("qStem");
+const qTags = $("qTags");
+const optList = $("optList");
+const explainBox = $("explainBox");
+const submitHint = $("submitHint");
+const bankInput = $("bankInput");
+
+const kpiProgress = $("kpiProgress");
+const kpiScore = $("kpiScore");
+const kpiStreak = $("kpiStreak");
+const kpiTime = $("kpiTime");
+
+function syncSettingsUI(){
+  perStageEl.value = state.perStage;
+  passScoreEl.value = state.passScore;
+  timeLimitEl.value = state.timeLimitMin;
+  bankInfoEl.textContent = bankInfo();
+}
+
+function setMode(m){
+  mode = m;
+  tagMode.textContent = (mode==="review") ? "错题复习" : "闯关模式";
+  $("btnReview").textContent = (mode==="review") ? "返回闯关" : "错题复习";
+  render();
+}
+
+function stopTimer(){
+  if(timer){ clearInterval(timer); timer=null; }
+}
+function startTimerIfNeeded(){
+  stopTimer();
+  if(!state.run) return;
+  if(state.run.timeLimitMs <= 0) return;
+  timer = setInterval(()=>{
+    const left = Math.max(0, state.run.deadlineMs - nowMs());
+    if(left <= 0){
+      stopTimer();
+      finishStageDueToTime();
+    }
+    renderKPI();
+  }, 250);
+}
+
+/* ======== 出题逻辑 ======== */
+function getQuestionById(id){
+  return QUESTION_BANK.find(q=>q.id===id) || null;
+}
+
+function makeStageRun(){
+  const per = state.perStage;
+  const pool = QUESTION_BANK.map(q=>q.id);
+
+  // 避免题库太小导致重复，允许重复但尽量不重复
+  const ids = shuffle(pool).slice(0, Math.min(per, pool.length));
+  while(ids.length < per) ids.push(pool[Math.floor(Math.random()*pool.length)]);
+
+  const timeLimitMs = (state.timeLimitMin||0) * 60 * 1000;
+  return {
+    stageIndex: state.stageIndex,
+    ids,
+    i: 0,
+    score: 0,
+    streak: 0,
+    answered: 0,
+    correct: 0,
+    // per question record
+    history: {}, // id -> {picked:[...], correct:boolean}
+    timeLimitMs,
+    deadlineMs: timeLimitMs>0 ? (nowMs()+timeLimitMs) : 0,
+    // current question shuffled options mapping
+    current: null
+  };
+}
+
+function makeReviewRun(){
+  const wrongIds = state.wrong.slice();
+  if(wrongIds.length === 0) return null;
+  const ids = shuffle(wrongIds);
+  return {
+    stageIndex: 0,
+    ids,
+    i: 0,
+    score: 0,
+    streak: 0,
+    answered: 0,
+    correct: 0,
+    history: {},
+    timeLimitMs: 0,
+    deadlineMs: 0,
+    current: null
+  };
+}
+
+function prepareCurrentQuestion(){
+  if(!state.run) return;
+  const id = state.run.ids[state.run.i];
+  const q = getQuestionById(id);
+  if(!q){ state.run.i++; return prepareCurrentQuestion(); }
+
+  // shuffle options, keep mapping
+  const order = shuffle(q.options.map((_,idx)=>idx));
+  const options = order.map(idx => q.options[idx]);
+
+  // correct indices after shuffle
+  const answerSet = new Set(q.answer);
+  const correctShuffled = order
+    .map((origIdx, newIdx) => answerSet.has(origIdx) ? newIdx : -1)
+    .filter(v=>v>=0);
+
+  state.run.current = {
+    id:q.id, type:q.type, stem:q.stem,
+    options,
+    correct: correctShuffled,
+    explain: q.explain || "",
+    tags: q.tags || []
+  };
+}
+
+/* ======== 判分 ======== */
+function arraysEqualAsSet(a,b){
+  if(a.length !== b.length) return false;
+  const sa = new Set(a), sb = new Set(b);
+  if(sa.size !== sb.size) return false;
+  for(const x of sa) if(!sb.has(x)) return false;
+  return true;
+}
+
+function scoreQuestion(qType, picked, correct){
+  // 规则：单选/判断：对=100，错=0
+  // 多选：全对=100；如果包含错误选项=0；如果是正确子集=按覆盖率给分（但不超过80）
+  if(qType === "single"){
+    return arraysEqualAsSet(picked, correct) ? 100 : 0;
+  }
+  // multi
+  const pickedSet = new Set(picked);
+  const correctSet = new Set(correct);
+  // picked contains wrong
+  for(const p of pickedSet){
+    if(!correctSet.has(p)) return 0;
+  }
+  // all correct
+  if(arraysEqualAsSet(picked, correct)) return 100;
+  // partial (subset)
+  const coverage = picked.length / correct.length;
+  return Math.floor(coverage * 80); // partial up to 80
+}
+
+function updateWrongBook(id, isCorrect){
+  const idx = state.wrong.indexOf(id);
+  if(isCorrect){
+    if(idx >= 0) state.wrong.splice(idx, 1); // 做对从错题本移除
+  }else{
+    if(idx < 0) state.wrong.push(id); // 做错加入错题本
+  }
+}
+
+/* ======== 渲染 ======== */
+function renderKPI(){
+  if(!state.run){
+    kpiProgress.textContent = "0 / 0";
+    kpiScore.textContent = "0";
+    kpiStreak.textContent = "0";
+    kpiTime.textContent = "∞";
+    return;
+  }
+  const total = state.run.ids.length;
+  kpiProgress.textContent = `${state.run.i + 1} / ${total}`;
+  kpiScore.textContent = `${state.run.score}`;
+  kpiStreak.textContent = `${state.run.streak}`;
+
+  if(state.run.timeLimitMs <= 0) kpiTime.textContent = "∞";
+  else{
+    const left = Math.max(0, state.run.deadlineMs - nowMs());
+    const mm = Math.floor(left/60000);
+    const ss = Math.floor((left%60000)/1000);
+    kpiTime.textContent = `${pad2(mm)}:${pad2(ss)}`;
+  }
+}
+
+function renderQuestion(){
+  explainBox.style.display = "none";
+  explainBox.textContent = "";
+  btnNext.disabled = true;
+
+  if(!state.run){
+    qMeta.textContent = "—";
+    qStem.textContent = "点击“开始/继续”开始闯关";
+    qTags.textContent = "";
+    optList.innerHTML = "";
+    btnSubmit.disabled = true;
+    submitHint.textContent = "";
+    return;
+  }
+
+  if(!state.run.current) prepareCurrentQuestion();
+  const q = state.run.current;
+  if(!q){
+    qStem.textContent = "本轮结束";
+    optList.innerHTML = "";
+    btnSubmit.disabled = true;
+    submitHint.textContent = "";
+    return;
+  }
+
+  tagStage.textContent = (mode==="review") ? `复习 ${state.wrong.length} 题` : `第 ${state.run.stageIndex} 关`;
+  qMeta.textContent = `${q.id} · ${q.type==="single" ? "单选/判断" : "多选"}`;
+  qStem.textContent = q.stem;
+  qTags.textContent = q.tags.length ? `标签：${q.tags.join(" / ")}` : "";
+
+  // build options
+  optList.innerHTML = "";
+  const isMulti = q.type === "multi";
+  const inputType = isMulti ? "checkbox" : "radio";
+
+  for(let i=0;i<q.options.length;i++){
+    const wrap = document.createElement("label");
+    wrap.className = "opt";
+    wrap.innerHTML = `
+      <input type="${inputType}" name="opt" value="${i}" />
+      <div><span class="mono">${String.fromCharCode(65+i)}.</span> ${q.options[i]}</div>
+    `;
+    wrap.addEventListener("click", (e)=>{
+      // allow clicking whole row; default input toggling is fine
+      setTimeout(()=>updateSubmitEnabled(),0);
+    });
+    optList.appendChild(wrap);
+  }
+
+  btnSubmit.disabled = true;
+  submitHint.textContent = isMulti ? "提示：多选可部分得分（但选错项直接 0 分）" : "";
+}
+
+function updateSubmitEnabled(){
+  const inputs = [...optList.querySelectorAll("input")];
+  const any = inputs.some(x=>x.checked);
+  btnSubmit.disabled = !any;
+}
+
+function render(){
+  syncSettingsUI();
+  renderKPI();
+  renderQuestion();
+  saveState(state);
+}
+
+/* ======== 流程控制 ======== */
+function ensureRun(){
+  if(state.run) return;
+  if(mode === "review"){
+    state.run = makeReviewRun();
+    if(!state.run){
+      alert("错题本为空：先去闯关做题，系统会自动收集错题。");
+      setMode("stage");
+      return;
+    }
+  }else{
+    state.run = makeStageRun();
+  }
+  prepareCurrentQuestion();
+  startTimerIfNeeded();
+}
+
+function nextQuestion(){
+  if(!state.run) return;
+  state.run.current = null;
+  state.run.i++;
+
+  if(state.run.i >= state.run.ids.length){
+    // end run
+    if(mode === "review"){
+      alert(`复习完成：正确 ${state.run.correct} / ${state.run.answered}。错题本剩余：${state.wrong.length}。`);
+      state.run = null;
+      setMode("stage");
+      stopTimer();
+      render();
+      return;
+    }else{
+      finishStage();
+      return;
+    }
+  }
+
+  prepareCurrentQuestion();
+  render();
+}
+
+function finishStageDueToTime(){
+  if(!state.run) return;
+  alert("时间到！本关自动结算。");
+  finishStage();
+}
+
+function finishStage(){
+  if(!state.run) return;
+  stopTimer();
+
+  const total = state.run.ids.length;
+  const rawPercent = total>0 ? Math.round((state.run.score / (total*100)) * 100) : 0;
+  const pass = rawPercent >= state.passScore;
+
+  const msg =
+`第 ${state.run.stageIndex} 关结算：
+- 题数：${total}
+- 正确：${state.run.correct}
+- 得分（百分制）：${rawPercent}
+- 过关线：${state.passScore}
+- 结果：${pass ? "通过 ✅" : "未通过 ❌"}
+- 错题本：${state.wrong.length} 题`;
+
+  alert(msg);
+
+  // update global stats
+  state.totalAnswered += state.run.answered;
+  state.totalCorrect += state.run.correct;
+
+  if(pass){
+    state.stageIndex += 1;
+    state.run = null; // start new stage next time
+  }else{
+    // redo same stage with new random questions
+    state.run = null;
+  }
+  render();
+}
+
+/* ======== 提交判题 ======== */
+function revealMarking(picked, correct){
+  const opts = [...optList.querySelectorAll(".opt")];
+  for(let i=0;i<opts.length;i++){
+    opts[i].classList.remove("correct","wrong");
+  }
+  for(const c of correct){
+    if(opts[c]) opts[c].classList.add("correct");
+  }
+  // if user picked wrong options highlight those
+  for(const p of picked){
+    if(!correct.includes(p) && opts[p]) opts[p].classList.add("wrong");
+  }
+}
+
+btnSubmit.addEventListener("click", ()=>{
+  ensureRun();
+  const q = state.run.current;
+  if(!q) return;
+
+  const inputs = [...optList.querySelectorAll("input")];
+  const picked = inputs.filter(x=>x.checked).map(x=>parseInt(x.value,10));
+  const correct = q.correct.slice().sort((a,b)=>a-b);
+  const pickedSorted = picked.slice().sort((a,b)=>a-b);
+
+  const pts = scoreQuestion(q.type, pickedSorted, correct);
+  const isCorrect = (pts === 100);
+
+  // streak bonus: 连对每题额外+10分（最多+30），只在闯关模式生效
+  let bonus = 0;
+  if(mode==="stage"){
+    if(isCorrect){
+      state.run.streak += 1;
+      bonus = Math.min(30, (state.run.streak-1)*10);
+    }else{
+      state.run.streak = 0;
+    }
+  }
+
+  state.run.score += (pts + bonus);
+  state.run.answered += 1;
+  state.run.correct += isCorrect ? 1 : 0;
+
+  // record
+  state.run.history[q.id] = { picked: pickedSorted, correct: isCorrect, pts, bonus };
+
+  // wrong book update
+  updateWrongBook(q.id, isCorrect);
+
+  // show marking + explain
+  revealMarking(pickedSorted, correct);
+  explainBox.style.display = "block";
+  explainBox.textContent =
+`结果：${isCorrect ? "✅ 全对" : (pts>0 ? "🟡 部分得分" : "❌ 错")}（本题 ${pts} 分${bonus?` + 连对奖励 ${bonus}`:""}）
+正确选项：${correct.map(i=>String.fromCharCode(65+i)).join(", ")}
+你的选择：${pickedSorted.map(i=>String.fromCharCode(65+i)).join(", ") || "（未选）"}
+解析：${q.explain || "（无）"}`;
+
+  btnNext.disabled = false;
+  btnSubmit.disabled = true;
+  submitHint.textContent = "已判题：点“下一题”继续";
+  renderKPI();
+  saveState(state);
+});
+
+btnNext.addEventListener("click", nextQuestion);
+
+btnSkip.addEventListener("click", ()=>{
+  ensureRun();
+  // 跳过不计分，但计入进度（你也可以改成不计入 answered）
+  nextQuestion();
+});
+
+btnStart.addEventListener("click", ()=>{
+  // update settings from UI
+  state.perStage = Math.max(5, Math.min(50, parseInt(perStageEl.value||"10",10)));
+  state.passScore = Math.max(50, Math.min(100, parseInt(passScoreEl.value||"70",10)));
+  state.timeLimitMin = Math.max(0, Math.min(120, parseInt(timeLimitEl.value||"0",10)));
+  saveState(state);
+
+  ensureRun();
+  render();
+});
+
+btnReview.addEventListener("click", ()=>{
+  if(mode === "review"){
+    // back to stage
+    state.run = null;
+    stopTimer();
+    setMode("stage");
+  }else{
+    // go review
+    state.run = null;
+    stopTimer();
+    setMode("review");
+  }
+});
+
+btnResetProgress.addEventListener("click", ()=>{
+  if(!confirm("确定清空进度与错题本？（题库不受影响）")) return;
+  clearState();
+  state = {
+    stageIndex: 1,
+    perStage: 10,
+    passScore: 70,
+    timeLimitMin: 0,
+    run: null,
+    wrong: [],
+    totalAnswered: 0,
+    totalCorrect: 0
+  };
+  stopTimer();
+  setMode("stage");
+  render();
+});
+
+btnImport.addEventListener("click", ()=>{
+  const raw = bankInput.value.trim();
+  if(!raw){
+    alert("请先在文本框粘贴题库 JSON。");
+    return;
+  }
+  try{
+    const data = JSON.parse(raw);
+    if(!Array.isArray(data)) throw new Error("题库必须是数组");
+    // basic validation
+    for(const q of data){
+      if(!q.id || !q.type || !q.stem || !Array.isArray(q.options) || !Array.isArray(q.answer)){
+        throw new Error("存在格式不完整的题目（需包含 id/type/stem/options/answer）");
+      }
+      if(!(q.type==="single" || q.type==="multi")){
+        throw new Error(`题目 ${q.id} 的 type 必须是 single 或 multi`);
+      }
+    }
+    QUESTION_BANK = data;
+    // reset run but keep progress and wrong book (you can choose to clear wrong)
+    state.run = null;
+    stopTimer();
+    alert(`导入成功：${QUESTION_BANK.length} 题。现在点“开始/继续”。`);
+    render();
+  }catch(e){
+    alert("导入失败：" + e.message);
+  }
+});
+
+btnExportWrong.addEventListener("click", ()=>{
+  const wrongQs = state.wrong.map(id=>getQuestionById(id)).filter(Boolean);
+  const out = JSON.stringify(wrongQs, null, 2);
+  bankInput.value = out;
+  alert(`已导出错题 ${wrongQs.length} 题到文本框（可复制保存）。`);
+});
+
+/* 初始渲染 */
+syncSettingsUI();
+setMode("stage");
+render();
+</script>
+</body>
+</html>
