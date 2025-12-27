@@ -117,7 +117,7 @@
 
 /* ================= 手机刷题优化 ================= */
 
-默认：隐藏底部答题栏
+/* 默认：隐藏底部答题栏 */
 
 /* 手机端显示底部栏 */
 @media (max-width: 640px){
@@ -140,6 +140,45 @@
     font-size: 15px;
   }
 }
+/* ======== 答题操作栏：桌面 / 手机分离 ======== */
+
+/* 桌面端：按钮在题目下方 */
+.desktopOnly{
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* 手机端：隐藏桌面按钮 */
+@media (max-width: 640px){
+  .desktopOnly{
+    display: none;
+  }
+}
+
+/* 手机端：底部固定操作栏 */
+#mobileAnswerBar{
+  display: none;
+}
+
+@media (max-width: 640px){
+  #mobileAnswerBar{
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    padding: 12px 14px;
+    gap: 10px;
+    background: linear-gradient(180deg, rgba(18,26,51,0.85), rgba(18,26,51,0.95));
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  body{
+    padding-bottom: 90px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -227,6 +266,15 @@
     提交
   </button>
   <button class="btn" id="btnNext" disabled style="flex:1">
+    下一题
+  </button>
+</div>
+<!-- 桌面端答题操作栏 -->
+<div class="answerBar desktopOnly">
+  <button class="btn primary" id="btnSubmitDesktop" disabled style="flex:1">
+    提交
+  </button>
+  <button class="btn" id="btnNextDesktop" disabled style="flex:1">
     下一题
   </button>
 </div>
@@ -2960,6 +3008,10 @@ btnSubmit.addEventListener("click", ()=>{
 });
 
 btnNext.addEventListener("click", nextQuestion);
+
+// 桌面端按钮复用手机逻辑
+$("btnSubmitDesktop").addEventListener("click", ()=> btnSubmit.click());
+$("btnNextDesktop").addEventListener("click", ()=> btnNext.click());
 
 btnSkip.addEventListener("click", ()=>{
   ensureRun();
