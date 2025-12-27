@@ -118,7 +118,18 @@
       main{grid-template-columns:1fr;}
     }
 /* ================= 手机刷题优化 ================= */
-@media (max-width: 640px){
+  /* 桌面端隐藏底部操作栏 */
+  #mobileAnswerBar{
+    display: flex;
+  }
+}
+
+@media (min-width: 641px){
+  #mobileAnswerBar{
+    display: none;
+  }
+}
+
 
   /* 主布局改为纵向 */
   main{
@@ -194,7 +205,7 @@
       <div class="row">
         <button class="btn primary" id="btnStart">开始/继续</button>
         <button class="btn" id="btnSkip">跳过本题</button>
-        <button class="btn" id="btnNext" disabled>下一题</button>
+
       </div>
 
       <div class="kpi">
@@ -238,18 +249,19 @@
     <p class="qTitle" id="qStem">点击“开始/继续”开始闯关</p>
     <div class="meta" id="qTags"></div>
     <div class="optList" id="optList"></div>
-	<div class="answerBar">
-	   <button class="btn primary" id="btnSubmit" disabled style="flex:1">
-	    提交
- 	 </button>
-	  <button class="btn" id="btnNext" disabled style="flex:1">
- 	    下一题
-	  </button>
-    </div>
       <div class="explain" id="explainBox" style="display:none;"></div>
     </div>
   </section>
 </main>
+<!-- 底部固定答题操作栏（必须放在 body 直系下） -->
+<div class="answerBar" id="mobileAnswerBar">
+  <button class="btn primary" id="btnSubmit" disabled style="flex:1">
+    提交
+  </button>
+  <button class="btn" id="btnNext" disabled style="flex:1">
+    下一题
+  </button>
+</div>
 
 <script>
 /** ==========================
@@ -2830,6 +2842,7 @@ function render(){
 if(window.innerWidth <= 640){
   $("controlPanel").style.display = state.run ? "none" : "block";
 }
+
   saveState(state);
 }
 
