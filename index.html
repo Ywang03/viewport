@@ -125,9 +125,9 @@
     grid-template-columns: 1fr;
   }
 
-  /* 隐藏左侧控制区 */
-  #controlPanel{
-    display: none;
+/* 隐藏左侧关卡设置区（不是答题区） */
+#settingsPanel{
+  display: none;
   }
 
   .qTitle{
@@ -195,7 +195,7 @@
 </header>
 
 <main>
-  <section class="card">
+  <section class="card" id="settingsPanel">
     <div class="hd"><h2>关卡设置</h2><span class="small mono" id="bankInfo"></span></div>
     <div class="bd">
       <div class="row">
@@ -258,6 +258,15 @@
     <div class="optList" id="optList"></div>
       <div class="explain" id="explainBox" style="display:none;"></div>
     </div>
+<!-- 桌面端：答题区下方操作按钮 -->
+<div class="answerBar desktopOnly">
+  <button class="btn primary" id="btnSubmitDesktop" disabled style="flex:1">
+    提交
+  </button>
+  <button class="btn" id="btnNextDesktop" disabled style="flex:1">
+    下一题
+  </button>
+</div>
   </section>
 </main>
 <!-- 底部固定答题操作栏（必须放在 body 直系下） -->
@@ -266,15 +275,6 @@
     提交
   </button>
   <button class="btn" id="btnNext" disabled style="flex:1">
-    下一题
-  </button>
-</div>
-<!-- 桌面端答题操作栏 -->
-<div class="answerBar desktopOnly">
-  <button class="btn primary" id="btnSubmitDesktop" disabled style="flex:1">
-    提交
-  </button>
-  <button class="btn" id="btnNextDesktop" disabled style="flex:1">
     下一题
   </button>
 </div>
@@ -2606,6 +2606,8 @@ const btnStart = $("btnStart");
 const btnSkip = $("btnSkip");
 const btnNext = $("btnNext");
 const btnSubmit = $("btnSubmit");
+const btnSubmitDesktop = $("btnSubmitDesktop");
+const btnNextDesktop = $("btnNextDesktop");
 const btnReview = $("btnReview");
 const btnResetProgress = $("btnResetProgress");
 const btnImport = $("btnImport");
@@ -2794,6 +2796,8 @@ function renderQuestion(){
   explainBox.style.display = "none";
   explainBox.textContent = "";
   btnNext.disabled = true;
+  btnNextDesktop.disabled = true;
+
 
   if(!state.run){
     qMeta.textContent = "—";
@@ -2801,6 +2805,8 @@ function renderQuestion(){
     qTags.textContent = "";
     optList.innerHTML = "";
     btnSubmit.disabled = true;
+    btnSubmitDesktop.disabled = true;
+
 
     return;
   }
@@ -2811,7 +2817,6 @@ function renderQuestion(){
     qStem.textContent = "本轮结束";
     optList.innerHTML = "";
     btnSubmit.disabled = true;
-    submitHint.textContent = "";
     return;
   }
 
@@ -2847,18 +2852,21 @@ function renderQuestion(){
 
 function updateSubmitEnabled(){
   const inputs = [...optList.querySelectorAll("input")];
-  const any = inputs.some(x=>x.checked);
+  const any = inputs.some(x => x.checked);
+
+  // 手机按钮
   btnSubmit.disabled = !any;
+
+  // 桌面按钮（关键就在这）
+  btnSubmitDesktop.disabled = !any;
 }
+
 
 function render(){
   syncSettingsUI();
   renderKPI();
   renderQuestion();
-// 手机端：开始答题后隐藏控制面板
-if(window.innerWidth <= 640){
-  $("controlPanel").style.display = state.run ? "none" : "block";
-}
+
 
   saveState(state);
 }
@@ -3003,6 +3011,9 @@ btnSubmit.addEventListener("click", ()=>{
 
   btnNext.disabled = false;
   btnSubmit.disabled = true;
+  // 同步桌面按钮
+  btnNextDesktop.disabled = false;
+  btnSubmitDesktop.disabled = true;
   renderKPI();
   saveState(state);
 });
