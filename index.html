@@ -269,8 +269,14 @@
 </div>
   </section>
 </main>
+
 <!-- 底部固定答题操作栏（必须放在 body 直系下） -->
 <div class="answerBar" id="mobileAnswerBar">
+  <!-- ★ 手机端专用：开始/继续 -->
+  <button class="btn warn" id="btnStartMobile" style="flex:1">
+    开始 / 继续
+  </button>
+
   <button class="btn primary" id="btnSubmit" disabled style="flex:1">
     提交
   </button>
@@ -2603,6 +2609,7 @@ const passScoreEl = $("passScore");
 const timeLimitEl = $("timeLimit");
 
 const btnStart = $("btnStart");
+const btnStartMobile = $("btnStartMobile");
 const btnSkip = $("btnSkip");
 const btnNext = $("btnNext");
 const btnSubmit = $("btnSubmit");
@@ -3040,7 +3047,7 @@ btnStart.addEventListener("click", ()=>{
   ensureRun();
   render();
 });
-
+btnStartMobile.addEventListener("click", ()=> btnStart.click());
 btnReview.addEventListener("click", ()=>{
   if(mode === "review"){
     // back to stage
