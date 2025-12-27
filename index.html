@@ -117,6 +117,50 @@
     @media (max-width: 980px){
       main{grid-template-columns:1fr;}
     }
+/* ================= 手机刷题优化 ================= */
+@media (max-width: 640px){
+
+  /* 主布局改为纵向 */
+  main{
+    grid-template-columns: 1fr;
+  }
+
+  /* 左侧控制区：答题时隐藏 */
+  #controlPanel{
+    display: none;
+  }
+
+  /* 题干更适合手机阅读 */
+  .qTitle{
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  /* 选项更好点 */
+  .opt{
+    padding: 14px 12px;
+    font-size: 15px;
+  }
+
+  /* 固定底部操作栏 */
+  .answerBar{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background: linear-gradient(180deg, rgba(18,26,51,0.95), rgba(18,26,51,0.88));
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding: 10px 12px;
+    display: flex;
+    gap: 10px;
+  }
+
+  body{
+    padding-bottom: 90px; /* 给底部按钮留空间 */
+  }
+}
+
   </style>
 </head>
 <body>
@@ -188,16 +232,20 @@
     </div>
   </section>
 
-  <section class="card">
+<section class="card" id="controlPanel">
     <div class="hd"><h2>答题区</h2><span class="small mono" id="qMeta">—</span></div>
     <div class="bd">
-      <p class="qTitle" id="qStem">点击“开始/继续”开始闯关</p>
-      <div class="meta" id="qTags"></div>
-      <div class="optList" id="optList"></div>
-      <div class="row" style="margin-top:12px;">
-        <button class="btn primary" id="btnSubmit" disabled>提交答案</button>
-        <span class="small" id="submitHint"></span>
-      </div>
+    <p class="qTitle" id="qStem">点击“开始/继续”开始闯关</p>
+    <div class="meta" id="qTags"></div>
+    <div class="optList" id="optList"></div>
+	<div class="answerBar">
+	   <button class="btn primary" id="btnSubmit" disabled style="flex:1">
+	    提交
+ 	 </button>
+	  <button class="btn" id="btnNext" disabled style="flex:1">
+ 	    下一题
+	  </button>
+    </div>
       <div class="explain" id="explainBox" style="display:none;"></div>
     </div>
   </section>
@@ -2778,6 +2826,10 @@ function render(){
   syncSettingsUI();
   renderKPI();
   renderQuestion();
+// 手机端：开始答题后隐藏控制面板
+if(window.innerWidth <= 640){
+  $("controlPanel").style.display = state.run ? "none" : "block";
+}
   saveState(state);
 }
 
