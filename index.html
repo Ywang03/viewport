@@ -114,64 +114,32 @@
       font-size:12px;
     }
     .small{font-size:12px; color:var(--muted)}
-    @media (max-width: 980px){
-      main{grid-template-columns:1fr;}
-    }
+
 /* ================= 手机刷题优化 ================= */
-  /* 桌面端隐藏底部操作栏 */
-  #mobileAnswerBar{
-    display: flex;
-  }
-}
 
-@media (min-width: 641px){
-  #mobileAnswerBar{
-    display: none;
-  }
-}
+默认：隐藏底部答题栏
 
-
-  /* 主布局改为纵向 */
+/* 手机端显示底部栏 */
+@media (max-width: 640px){
   main{
     grid-template-columns: 1fr;
   }
 
-  /* 左侧控制区：答题时隐藏 */
+  /* 隐藏左侧控制区 */
   #controlPanel{
     display: none;
   }
 
-  /* 题干更适合手机阅读 */
   .qTitle{
     font-size: 17px;
     line-height: 1.6;
   }
 
-  /* 选项更好点 */
   .opt{
     padding: 14px 12px;
     font-size: 15px;
   }
-
-  /* 固定底部操作栏 */
-  .answerBar{
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 99;
-    background: linear-gradient(180deg, rgba(18,26,51,0.95), rgba(18,26,51,0.88));
-    border-top: 1px solid rgba(255,255,255,0.12);
-    padding: 10px 12px;
-    display: flex;
-    gap: 10px;
-  }
-
-  body{
-    padding-bottom: 90px; /* 给底部按钮留空间 */
-  }
 }
-
   </style>
 </head>
 <body>
@@ -2600,7 +2568,6 @@ const qStem = $("qStem");
 const qTags = $("qTags");
 const optList = $("optList");
 const explainBox = $("explainBox");
-const submitHint = $("submitHint");
 const bankInput = $("bankInput");
 
 const kpiProgress = $("kpiProgress");
@@ -2786,7 +2753,7 @@ function renderQuestion(){
     qTags.textContent = "";
     optList.innerHTML = "";
     btnSubmit.disabled = true;
-    submitHint.textContent = "";
+
     return;
   }
 
@@ -2817,6 +2784,9 @@ function renderQuestion(){
       <input type="${inputType}" name="opt" value="${i}" />
       <div><span class="mono">${String.fromCharCode(65+i)}.</span> ${q.options[i]}</div>
     `;
+    const input = wrap.querySelector("input");
+    input.addEventListener("change", updateSubmitEnabled);
+
     wrap.addEventListener("click", (e)=>{
       // allow clicking whole row; default input toggling is fine
       setTimeout(()=>updateSubmitEnabled(),0);
@@ -2825,7 +2795,6 @@ function renderQuestion(){
   }
 
   btnSubmit.disabled = true;
-  submitHint.textContent = isMulti ? "提示：多选可部分得分（但选错项直接 0 分）" : "";
 }
 
 function updateSubmitEnabled(){
@@ -2986,7 +2955,6 @@ btnSubmit.addEventListener("click", ()=>{
 
   btnNext.disabled = false;
   btnSubmit.disabled = true;
-  submitHint.textContent = "已判题：点“下一题”继续";
   renderKPI();
   saveState(state);
 });
